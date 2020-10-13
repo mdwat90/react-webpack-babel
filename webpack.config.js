@@ -1,42 +1,42 @@
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: "./src/index.ts",
-  mode: "development",
+  entry: './src/index.ts',
+  mode: 'development',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: ["babel-loader", "eslint-loader"],
-        options: { presets: ["@babel/env"] },
+        loader: ['babel-loader', 'eslint-loader'],
+        options: { presets: ['@babel/env'] },
       },
-      { test: /\.tsx?$/, loader: "ts-loader" },
+      { test: /\.tsx?$/, loader: 'ts-loader' },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
           },
         ],
       },
     ],
   },
-  resolve: { extensions: ["*", ".ts", ".tsx", ".js", ".jsx"] },
+  resolve: { extensions: ['*', '.ts', '.tsx', '.js', '.jsx'] },
   output: {
-    path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist/'),
+    publicPath: '/dist/',
+    filename: 'bundle.js',
   },
   devServer: {
-    contentBase: path.join(__dirname, "public/"),
+    contentBase: path.join(__dirname, 'public/'),
     port: 3000,
-    publicPath: "http://localhost:3000/dist/",
+    publicPath: 'http://localhost:3000/dist/',
     hotOnly: true,
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
