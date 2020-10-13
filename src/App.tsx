@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { hot } from 'react-hot-loader';
 import './App.css';
 
-const App = () => {
+const App: React.FC = (): any => {
   return (
-    <div className="App">
-      <h1>Hello World!</h1>
+    <div>
+      <h1>YAY! It's working!</h1>
     </div>
   );
 };
