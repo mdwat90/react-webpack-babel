@@ -1,4 +1,4 @@
-# react-webpack-babel
+# react-webpack-babel-typescript
 
 ## WIP:: Project objectives:
  - Configure webpack, react and babel from scratch.
