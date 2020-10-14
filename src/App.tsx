@@ -1,6 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/database';
+import 'firebase/analytics';
 import './App.css';
 
 const App: React.FC = (): any => {
@@ -17,6 +20,8 @@ const App: React.FC = (): any => {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  console.log(firebase);
 
   const signUp = () => {
     firebase.database().ref('users/').set({
