@@ -22,6 +22,12 @@ module.exports = {
         use: ['sass-loader'],
       },
       {
+        enforce: 'pre',
+        test: /\.js$/,
+        loader: 'source-map-loader',
+        exclude: /node_modules\/@firebase\/auth/, //to just exclude firebase auth from source-map
+      },
+      {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
           {

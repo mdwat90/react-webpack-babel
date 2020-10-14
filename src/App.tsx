@@ -21,8 +21,6 @@ const App: React.FC = (): any => {
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 
-  console.log(firebase);
-
   const signUp = () => {
     firebase.database().ref('users/').set({
       username: 'David',
