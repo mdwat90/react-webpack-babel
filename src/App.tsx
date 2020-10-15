@@ -18,7 +18,7 @@ const App: React.FC = (): any => {
     measurementId: process.env.MEASUREMENT_ID,
   };
 
-  if (!firebase) {
+  if (!firebase.apps.length) {
     try {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
@@ -34,6 +34,7 @@ const App: React.FC = (): any => {
       email: 'test@test.com',
     });
   };
+
   return (
     <div>
       <h1>Welcome</h1>
