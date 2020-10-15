@@ -1,5 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import { Router, Link, RouteComponentProps } from '@reach/router';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
@@ -35,10 +36,22 @@ const App: React.FC = (): any => {
     });
   };
 
+  let Home = (props: RouteComponentProps) => (
+    <div>
+      <button onClick={signUp}>Sign Up</button>
+    </div>
+  );
+  let Dash = (props: RouteComponentProps) => <div>Dashboard Component</div>;
+
   return (
     <div>
-      <h1>Welcome</h1>
-      <button onClick={signUp}>Sign Up</button>
+      <nav>
+        <Link to="/">Home</Link> <Link to="dashboard">Dashboard</Link>
+      </nav>
+      <Router>
+        <Home path="/" />
+        <Dash path="dashboard" />
+      </Router>
     </div>
   );
 };
