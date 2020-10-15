@@ -17,9 +17,16 @@ const App: React.FC = (): any => {
     appId: process.env.APP_ID,
     measurementId: process.env.MEASUREMENT_ID,
   };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+
+  if (!firebase) {
+    try {
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const signUp = () => {
     firebase.database().ref('users/').set({
