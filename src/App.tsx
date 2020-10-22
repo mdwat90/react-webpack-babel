@@ -10,11 +10,6 @@ import FirebaseAuth from './components/FirebaseAuth';
 import Dashboard from './components/Dashboard';
 
 const App: React.FC = (): any => {
-  // const signInUrl =
-  //   process.env.NODE_ENV === 'development'
-  //     ? 'http://localhost:3000/dashboard'
-  //     : 'http://bulletin.com/dashboard';
-
   var firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
