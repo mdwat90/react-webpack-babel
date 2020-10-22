@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app';
 import { UserContext } from '../../utils/userContext';
 import { RouteComponentProps } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { handleLocalStorage } from '../../helpers';
 import 'firebase/auth';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
@@ -30,10 +31,8 @@ const FirebaseAuth = (props: RouteComponentProps) => {
           uid,
         };
         setUserDetails(userDetails);
-        localStorage.setItem('displayName', displayName);
-        localStorage.setItem('email', email);
-        localStorage.setItem('photoURL', photoURL);
-        localStorage.setItem('uid', uid);
+        // TODO: Make localStorage expire
+        handleLocalStorage(authResult.user);
         // TODO: Can we use the uiConfig signInSuccessUrl?
         props.navigate(`/dashboard`, { replace: true });
         return false;
