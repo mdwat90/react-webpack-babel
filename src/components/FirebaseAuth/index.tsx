@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import * as firebase from 'firebase/app';
-import * as firebaseui from 'firebaseui';
 import { UserContext } from '../../utils/userContext';
 import { RouteComponentProps } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
@@ -17,7 +16,6 @@ const FirebaseAuth = (props: RouteComponentProps) => {
   var uiConfig = {
     // signInSuccessUrl: '/dashboard',
     signInOptions: [
-      // Leave the lines as is for the providers you want to offer your users.
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     ],
@@ -50,7 +48,6 @@ const FirebaseAuth = (props: RouteComponentProps) => {
     },
   };
 
-  // return <div id="firebaseui-auth-container"></div>;
   return (
     <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
   );

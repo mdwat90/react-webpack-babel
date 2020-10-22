@@ -8,7 +8,6 @@ interface UserContextProps {
 export const UserContext = React.createContext({} as UserContextProps);
 
 export const UserProvider = ({ children }: any) => {
-  console.log('LOCAL STORAGE', localStorage);
   const [user, setUserDetails] = useState(localStorage);
   console.log('CURRENT USER CONTEXT', user);
   return (

@@ -7,7 +7,6 @@ import 'firebase/auth';
 const Dash = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
 
-  console.log('DASHBOARD COMPONENT USER', user);
   const signOut = () => {
     firebase
       .auth()
