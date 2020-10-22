@@ -1,35 +1,31 @@
 import React, { useContext } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { UserContext } from '../../utils/userContext';
-import * as firebase from 'firebase/app';
+import { signOut } from '../../helpers';
 import 'firebase/auth';
 
-const Dash = (props: RouteComponentProps) => {
+const Dashboard = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
 
-  const signOut = () => {
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        // Sign-out successful.
-        console.log('SIGNED OUT');
-        localStorage.clear();
-        props.navigate(`/`, { replace: true });
-      })
-      .catch(function (error) {
-        // An error happened.
-        console.log('SIGNOUT ERROR', error);
-      });
-  };
   return (
     <div>
       <nav>
-        <button onClick={signOut}>SIGN OUT</button>
+        <button onClick={() => signOut(props)}>SIGN OUT</button>
         <span>Welcome {user.displayName}!</span>
+        <span>
+          <img
+            src={user.photoURL}
+            alt={`photo of ${user.displayName}`}
+            style={{
+              height: '50px',
+              width: '50px',
+              borderRadius: '20px',
+            }}
+          />
+        </span>
       </nav>
     </div>
   );
 };
 
-export default Dash;
+export default Dashboard;

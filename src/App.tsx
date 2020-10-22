@@ -7,7 +7,7 @@ import 'firebase/analytics';
 import { UserProvider } from './utils/userContext';
 import './App.css';
 import FirebaseAuth from './components/FirebaseAuth';
-import Dash from './components/Dashboard';
+import Dashboard from './components/Dashboard';
 
 const App: React.FC = (): any => {
   // const signInUrl =
@@ -39,8 +39,9 @@ const App: React.FC = (): any => {
   return (
     <UserProvider>
       <Router>
+        {/* TODO: Protected routes and redirects when there is localStorage */}
         <FirebaseAuth path="/" />
-        <Dash path="dashboard" />
+        <Dashboard path="dashboard" />
       </Router>
     </UserProvider>
   );
