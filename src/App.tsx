@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { Router, Redirect, Link, RouteComponentProps } from '@reach/router';
+import { Router } from '@reach/router';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
