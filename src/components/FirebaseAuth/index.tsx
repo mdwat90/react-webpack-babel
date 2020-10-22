@@ -24,11 +24,18 @@ const FirebaseAuth = (props: RouteComponentProps) => {
 
     callbacks: {
       signInSuccessWithAuthResult: function (authResult: any) {
-        setUserDetails(authResult.user);
-        localStorage.setItem('displayName', authResult.user.displayName);
-        localStorage.setItem('email', authResult.user.email);
-        localStorage.setItem('photoURL', authResult.user.photoURL);
-        localStorage.setItem('uid', authResult.user.uid);
+        const { displayName, email, photoURL, uid } = authResult.user;
+        const userDetails = {
+          displayName,
+          email,
+          photoURL,
+          uid,
+        };
+        setUserDetails(userDetails);
+        localStorage.setItem('displayName', displayName);
+        localStorage.setItem('email', email);
+        localStorage.setItem('photoURL', photoURL);
+        localStorage.setItem('uid', uid);
         // TODO: Can we use the uiConfig signInSuccessUrl?
         props.navigate(`/dashboard`, { replace: true });
         return false;
