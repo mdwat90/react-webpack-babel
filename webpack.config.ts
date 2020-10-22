@@ -48,6 +48,11 @@ module.exports = {
     port: 3000,
     publicPath: 'http://localhost:3000/build/',
     hotOnly: true,
+    historyApiFallback: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new Dotenv()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new Dotenv(),
+    // new webpack.EnvironmentPlugin(['NODE_ENV', 'DEBUG']),
+  ],
 };

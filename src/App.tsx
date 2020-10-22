@@ -1,13 +1,20 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { Router, Link, RouteComponentProps } from '@reach/router';
+import { Router, Redirect, Link, RouteComponentProps } from '@reach/router';
 import * as firebase from 'firebase/app';
-import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/analytics';
+import { UserProvider } from './utils/userContext';
 import './App.css';
+import FirebaseAuth from './components/FirebaseAuth';
+import Dash from './components/Dashboard';
 
 const App: React.FC = (): any => {
+  // const signInUrl =
+  //   process.env.NODE_ENV === 'development'
+  //     ? 'http://localhost:3000/dashboard'
+  //     : 'http://bulletin.com/dashboard';
+
   var firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
@@ -29,30 +36,13 @@ const App: React.FC = (): any => {
     }
   }
 
-  const signUp = () => {
-    firebase.database().ref('users/').set({
-      username: 'David',
-      email: 'test@test.com',
-    });
-  };
-
-  let Home = (props: RouteComponentProps) => (
-    <div>
-      <button onClick={signUp}>Sign Up</button>
-    </div>
-  );
-  let Dash = (props: RouteComponentProps) => <div>Dashboard Component</div>;
-
   return (
-    <div>
-      <nav>
-        <Link to="/">Home</Link> <Link to="dashboard">Dashboard</Link>
-      </nav>
+    <UserProvider>
       <Router>
-        <Home path="/" />
+        <FirebaseAuth path="/" />
         <Dash path="dashboard" />
       </Router>
-    </div>
+    </UserProvider>
   );
 };
 
