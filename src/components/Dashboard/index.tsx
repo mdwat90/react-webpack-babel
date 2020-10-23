@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, Redirect } from '@reach/router';
 import { UserContext } from '../../utils/userContext';
 import { signOut, checkLocalStorageExpiration } from '../../helpers';
 import 'firebase/auth';
@@ -10,6 +10,10 @@ const Dashboard = (props: RouteComponentProps) => {
   const hasPhoto = !!user.photoURL;
 
   checkLocalStorageExpiration(props);
+
+  if (!user.displayName) {
+    return <Redirect noThrow to="/" />;
+  }
 
   return (
     <div>

@@ -17,7 +17,7 @@ export const signOut = (navigationProps: RouteComponentProps) => {
     });
 };
 
-export const handleLocalStorage = (auth: any) => {
+export const setLocalStorage = (auth: any) => {
   const { displayName, email, photoURL } = auth;
   const now = new Date();
 

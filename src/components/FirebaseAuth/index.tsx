@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
 import * as firebase from 'firebase/app';
 import { UserContext } from '../../utils/userContext';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, Redirect } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { handleLocalStorage } from '../../helpers';
+import { setLocalStorage } from '../../helpers';
 import 'firebase/auth';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
   const { user, setUserDetails } = useContext(UserContext);
+
+  if (user.displayName) {
+    return <Redirect noThrow to="dashboard" />;
+  }
 
   // const signInUrl =
   //   process.env.NODE_ENV === 'development'
@@ -32,7 +36,7 @@ const FirebaseAuth = (props: RouteComponentProps) => {
         };
         setUserDetails(userDetails);
         // TODO: Make localStorage expire
-        handleLocalStorage(authResult.user);
+        setLocalStorage(authResult.user);
         // TODO: Can we use the uiConfig signInSuccessUrl?
         props.navigate(`/dashboard`, { replace: true });
         return false;
