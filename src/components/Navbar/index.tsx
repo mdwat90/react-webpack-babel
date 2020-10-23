@@ -7,10 +7,7 @@ const Navbar = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
   const hasPhoto = !!user.photoURL;
 
-  if (document.hidden) {
-    console.log('DOCUMENT HIDDEN');
-    checkLocalStorageExpiration(props);
-  }
+  checkLocalStorageExpiration(props);
 
   return (
     <nav

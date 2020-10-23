@@ -9,7 +9,9 @@ import 'firebase/auth';
 const FirebaseAuth = (props: RouteComponentProps) => {
   const { user, setUserDetails } = useContext(UserContext);
 
-  if (user.displayName) {
+  const localStorageUser = localStorage.getItem('displayName');
+
+  if (localStorageUser) {
     return <Redirect noThrow to="dashboard" />;
   }
 
