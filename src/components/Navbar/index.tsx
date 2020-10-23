@@ -26,7 +26,7 @@ const Navbar = (props: RouteComponentProps) => {
         <button onClick={() => signOut(props)}>SIGN OUT</button>
       </span>
       <span>Welcome {user.displayName}!</span>
-      {hasPhoto && (
+      {hasPhoto ? (
         <img
           src={user.photoURL}
           alt={`photo of ${user.displayName}`}
@@ -36,6 +36,14 @@ const Navbar = (props: RouteComponentProps) => {
             borderRadius: '20px',
           }}
         />
+      ) : (
+        <span
+          style={{
+            height: '50px',
+            width: '50px',
+            borderRadius: '20px',
+          }}
+        ></span>
       )}
     </nav>
   );
