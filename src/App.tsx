@@ -7,7 +7,7 @@ import 'firebase/analytics';
 import { UserProvider } from './utils/userContext';
 import './App.css';
 import FirebaseAuth from './components/FirebaseAuth';
-import Dashboard from './components/Dashboard';
+import Dashboard from './screens/Dashboard';
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
