@@ -14,7 +14,7 @@ const Dashboard = (props: RouteComponentProps) => {
   return (
     <div
       style={{
-        height: '100px',
+        height: '100vh',
         width: '100%',
       }}
     >
@@ -26,7 +26,7 @@ const Dashboard = (props: RouteComponentProps) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100%',
+          height: '100vh',
           width: '100%',
           backgroundColor: 'grey',
         }}

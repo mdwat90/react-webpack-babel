@@ -13,22 +13,30 @@ const Navbar = (props: RouteComponentProps) => {
   }
 
   return (
-    <nav>
-      <button onClick={() => signOut(props)}>SIGN OUT</button>
-      <span>Welcome {user.displayName}!</span>
+    <nav
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        margin: '0.5em 1.5em',
+      }}
+    >
       <span>
-        {hasPhoto && (
-          <img
-            src={user.photoURL}
-            alt={`photo of ${user.displayName}`}
-            style={{
-              height: '50px',
-              width: '50px',
-              borderRadius: '20px',
-            }}
-          />
-        )}
+        <button onClick={() => signOut(props)}>SIGN OUT</button>
       </span>
+      <span>Welcome {user.displayName}!</span>
+      {hasPhoto && (
+        <img
+          src={user.photoURL}
+          alt={`photo of ${user.displayName}`}
+          style={{
+            height: '50px',
+            width: '50px',
+            borderRadius: '20px',
+          }}
+        />
+      )}
     </nav>
   );
 };
