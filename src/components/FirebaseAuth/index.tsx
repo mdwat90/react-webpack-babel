@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import * as firebase from 'firebase/app';
 import { UserContext } from '../../utils/userContext';
-import { RouteComponentProps, Redirect } from '@reach/router';
+import { RouteComponentProps, Redirect, navigate } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
 import 'firebase/auth';
@@ -40,7 +40,7 @@ const FirebaseAuth = (props: RouteComponentProps) => {
         // TODO: Make localStorage expire
         setLocalStorage(authResult.user);
         // TODO: Can we use the uiConfig signInSuccessUrl?
-        props.navigate(`/dashboard`, { replace: true });
+        navigate(`/dashboard`, { replace: true });
         return false;
       },
     },
