@@ -11,9 +11,9 @@ import { Typography } from '@material-ui/core';
 const FirebaseAuth = (props: RouteComponentProps) => {
   const { user, setUserDetails } = useContext(UserContext);
 
-  const localStorageUid = localStorage.getItem('bulletinUid');
+  const localStorageUID = localStorage.getItem('bulletinUID');
 
-  if (localStorageUid) {
+  if (localStorageUID) {
     return <Redirect noThrow to="dashboard" />;
   }
 
