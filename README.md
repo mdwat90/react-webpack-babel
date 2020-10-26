@@ -5,7 +5,7 @@
 1. Clone the repo locally.
 2. Run `npm install`.
 3. Run start script with the `npm start` command.
-4. Visit local site at `http://localhost:3000/`.
+4. Visit local site at [http://localhost:3000/](http://localhost:3000/).
 
 ## WIP:: Project objectives:
 
