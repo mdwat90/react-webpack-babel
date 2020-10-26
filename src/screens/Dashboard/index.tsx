@@ -7,7 +7,10 @@ import 'firebase/auth';
 
 const Dashboard = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
-  if (!user.displayName) {
+
+  const localStorageUid = localStorage.getItem('bulletinUid');
+
+  if (!localStorageUid) {
     return <Redirect noThrow to="/" />;
   }
 

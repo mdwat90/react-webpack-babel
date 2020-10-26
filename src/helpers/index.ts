@@ -18,12 +18,13 @@ export const signOut = (navigationProps: RouteComponentProps) => {
 };
 
 export const setLocalStorage = (auth: any) => {
-  const { displayName, email, photoURL } = auth;
+  const { displayName, email, photoURL, uid } = auth;
   const now = new Date();
 
   localStorage.clear();
   localStorage.setItem('displayName', displayName);
   localStorage.setItem('email', email);
+  localStorage.setItem('bulletinUid', uid);
   photoURL !== null && localStorage.setItem('photoURL', photoURL);
 
   localStorage.setItem('expiresAt', JSON.stringify(now.getTime() + 100000000));
