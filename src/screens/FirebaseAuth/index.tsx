@@ -4,6 +4,7 @@ import { UserContext } from '../../utils/userContext';
 import { RouteComponentProps, Redirect, navigate } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
+import StyledContainer from './StyledContainer';
 import 'firebase/auth';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
@@ -54,7 +55,9 @@ const FirebaseAuth = (props: RouteComponentProps) => {
   };
 
   return (
-    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+    <StyledContainer>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+    </StyledContainer>
   );
 };
 

@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { signOut, checkLocalStorageExpiration } from '../../helpers';
 import { UserContext } from '../../utils/userContext';
+import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core';
+import StyledToolbar from './StyledToolbar';
 
 const Navbar = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
@@ -10,39 +12,36 @@ const Navbar = (props: RouteComponentProps) => {
   checkLocalStorageExpiration(props);
 
   return (
-    <nav
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        margin: '0.5em 1.5em',
-      }}
-    >
-      <span>
-        <button onClick={() => signOut(props)}>SIGN OUT</button>
-      </span>
-      <span>Welcome {user.displayName}!</span>
-      {hasPhoto ? (
-        <img
-          src={user.photoURL}
-          alt={`photo of ${user.displayName}`}
-          style={{
-            height: '50px',
-            width: '50px',
-            borderRadius: '20px',
-          }}
-        />
-      ) : (
-        <span
-          style={{
-            height: '50px',
-            width: '50px',
-            borderRadius: '20px',
-          }}
-        ></span>
-      )}
-    </nav>
+    <React.Fragment>
+      <AppBar position="fixed" color="default">
+        <StyledToolbar>
+          <span>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => signOut(props)}
+            >
+              SIGN OUT
+            </Button>
+          </span>
+          <span>
+            <Typography>Welcome {user.displayName}!</Typography>
+          </span>
+          {hasPhoto ? (
+            <Avatar src={user.photoURL} alt={`photo of ${user.displayName}`} />
+          ) : (
+            <span
+              style={{
+                height: '50px',
+                width: '50px',
+                borderRadius: '20px',
+              }}
+            ></span>
+          )}
+        </StyledToolbar>
+      </AppBar>
+      <Toolbar />
+    </React.Fragment>
   );
 };
 

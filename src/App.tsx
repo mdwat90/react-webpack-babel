@@ -6,7 +6,7 @@ import 'firebase/database';
 import 'firebase/analytics';
 import { UserProvider } from './utils/userContext';
 import './App.css';
-import FirebaseAuth from './components/FirebaseAuth';
+import FirebaseAuth from './screens/FirebaseAuth';
 import Dashboard from './screens/Dashboard';
 
 const App: React.FC = (): any => {
