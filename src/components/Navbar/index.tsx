@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { RouteComponentProps } from '@reach/router';
+import clsx from 'clsx';
 import { checkLocalStorageExpiration } from '../../helpers';
 import { UserContext } from '../../utils/userContext';
 import {
@@ -10,6 +11,7 @@ import {
   Typography,
   IconButton,
   Divider,
+  useTheme,
 } from '@material-ui/core';
 
 import NavbarStyles from './NavbarStyles';
@@ -30,23 +32,38 @@ const Navbar = (props: RouteComponentProps) => {
 
   return (
     <React.Fragment>
-      <AppBar position="fixed" color="default" className={classes.appBar}>
+      <AppBar
+        position="fixed"
+        color="default"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
         <Toolbar className={classes.toolBar}>
-          <span>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => toggleDrawer(true)}
-              edge="start"
-            >
-              <MenuIcon />
-            </IconButton>
-          </span>
+          {open ? (
+            <span></span>
+          ) : (
+            <span>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => toggleDrawer(true)}
+                edge="start"
+              >
+                <MenuIcon />
+              </IconButton>
+            </span>
+          )}
           <span>
             <Typography>Welcome {user.displayName}!</Typography>
           </span>
           {hasPhoto ? (
-            <Avatar src={user.photoURL} alt={`photo of ${user.displayName}`} />
+            <div>
+              <Avatar
+                src={user.photoURL}
+                alt={`photo of ${user.displayName}`}
+              />
+            </div>
           ) : (
             <span></span>
           )}

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { signOut } from '../../helpers';
+import clsx from 'clsx';
 import {
   AppBar,
   Avatar,
@@ -9,6 +10,7 @@ import {
   Drawer,
   IconButton,
   Divider,
+  useTheme,
 } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DrawerStyles from './DrawerStyles';
@@ -26,11 +28,17 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
 
   return (
     <Drawer
-      variant="persistent"
+      variant="permanent"
       open={open}
-      className={classes.drawer}
+      className={clsx(classes.drawer, {
+        [classes.drawerOpen]: open,
+        [classes.drawerClose]: !open,
+      })}
       classes={{
-        paper: classes.drawerPaper,
+        paper: clsx({
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        }),
       }}
     >
       <div
@@ -39,27 +47,53 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
           alignItems: 'center',
           justifyContent: 'flex-end',
           margin: '0px 10px',
-          height: '20vh',
+          height: '10vh',
         }}
       >
-        <IconButton onClick={() => toggleDrawer(false)}>
-          <ChevronLeftIcon />
-        </IconButton>
+        {open ? (
+          <IconButton onClick={() => toggleDrawer(false)}>
+            <ChevronLeftIcon />
+          </IconButton>
+        ) : (
+          <span></span>
+        )}
       </div>
-      <Divider />
+      {open && <Divider />}
       <div
         style={{
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
           height: '100vh',
-          padding: '25px 0px',
+          padding: '25px 20px',
+        }}
+      >
+        {open && (
+          <div>
+            <h2>Stuff</h2>
+            <h2>More Stuff</h2>
+            <h2>Nothing</h2>
+          </div>
+        )}
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '10vh',
+          padding: '25px 20px',
         }}
       >
         <Button
           variant="outlined"
           color="secondary"
           onClick={() => signOut(navProps)}
+          className={clsx({
+            [classes.hide]: !open,
+          })}
         >
           SIGN OUT
         </Button>
