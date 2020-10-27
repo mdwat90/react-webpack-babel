@@ -11,10 +11,6 @@ const StyledDrawer = styled(Drawer)<DrawerProps>`
   & > div {
     width: ${(props) => props.width};
   }
-
-  display: flex;
-  justify-content: flex-start;
-  padding: 5vw;
 `;
 
 export default StyledDrawer;

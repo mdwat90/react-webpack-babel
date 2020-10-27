@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { RouteComponentProps } from '@reach/router';
-import { signOut, checkLocalStorageExpiration } from '../../helpers';
+import { checkLocalStorageExpiration } from '../../helpers';
 import { UserContext } from '../../utils/userContext';
 import {
   AppBar,
@@ -11,21 +11,21 @@ import {
   IconButton,
   Divider,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+
 import StyledToolbar from './StyledToolbar';
+import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '../Drawer';
 
 const Navbar = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
-  const hasPhoto = !!user.photoURL;
-
-  checkLocalStorageExpiration(props);
-
   const toggleDrawer = (toggle: boolean) => {
     setOpen(toggle);
   };
+
+  const hasPhoto = !!user.photoURL;
+
+  checkLocalStorageExpiration(props);
 
   return (
     <React.Fragment>
@@ -47,50 +47,17 @@ const Navbar = (props: RouteComponentProps) => {
           {hasPhoto ? (
             <Avatar src={user.photoURL} alt={`photo of ${user.displayName}`} />
           ) : (
-            <span
-              style={{
-                height: '50px',
-                width: '50px',
-                borderRadius: '20px',
-              }}
-            ></span>
+            <span></span>
           )}
         </StyledToolbar>
       </AppBar>
       <Toolbar />
-      <Drawer open={open} width="225px">
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            margin: '0px 10px',
-            height: '8vh',
-          }}
-        >
-          <IconButton onClick={() => toggleDrawer(false)}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'center',
-            height: '100vh',
-            padding: '25px 0px',
-          }}
-        >
-          <Button
-            variant="outlined"
-            color="secondary"
-            onClick={() => signOut(props)}
-          >
-            SIGN OUT
-          </Button>
-        </div>
-      </Drawer>
+      <Drawer
+        width="225px"
+        open={open}
+        toggleDrawer={toggleDrawer}
+        navProps={props}
+      />
     </React.Fragment>
   );
 };
