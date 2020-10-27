@@ -12,11 +12,12 @@ import {
   Divider,
 } from '@material-ui/core';
 
-import StyledToolbar from './StyledToolbar';
+import NavbarStyles from './NavbarStyles';
 import MenuIcon from '@material-ui/icons/Menu';
-import Drawer from '../Drawer';
+import CustomDrawer from '../CustomDrawer';
 
 const Navbar = (props: RouteComponentProps) => {
+  const classes = NavbarStyles();
   const { user } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const toggleDrawer = (toggle: boolean) => {
@@ -29,8 +30,8 @@ const Navbar = (props: RouteComponentProps) => {
 
   return (
     <React.Fragment>
-      <AppBar position="fixed" color="default">
-        <StyledToolbar>
+      <AppBar position="fixed" color="default" className={classes.appBar}>
+        <Toolbar className={classes.toolBar}>
           <span>
             <IconButton
               color="inherit"
@@ -49,15 +50,10 @@ const Navbar = (props: RouteComponentProps) => {
           ) : (
             <span></span>
           )}
-        </StyledToolbar>
+        </Toolbar>
       </AppBar>
       <Toolbar />
-      <Drawer
-        width="225px"
-        open={open}
-        toggleDrawer={toggleDrawer}
-        navProps={props}
-      />
+      <CustomDrawer open={open} toggleDrawer={toggleDrawer} navProps={props} />
     </React.Fragment>
   );
 };
