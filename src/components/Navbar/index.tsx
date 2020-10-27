@@ -58,13 +58,14 @@ const Navbar = (props: RouteComponentProps) => {
         </StyledToolbar>
       </AppBar>
       <Toolbar />
-      <Drawer open={open} width="10vw">
+      <Drawer open={open} width="225px">
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
-            height: '60px',
+            margin: '0px 10px',
+            height: '8vh',
           }}
         >
           <IconButton onClick={() => toggleDrawer(false)}>
@@ -72,7 +73,15 @@ const Navbar = (props: RouteComponentProps) => {
           </IconButton>
         </div>
         <Divider />
-        <span>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+            height: '100vh',
+            padding: '25px 0px',
+          }}
+        >
           <Button
             variant="outlined"
             color="secondary"
@@ -80,7 +89,7 @@ const Navbar = (props: RouteComponentProps) => {
           >
             SIGN OUT
           </Button>
-        </span>
+        </div>
       </Drawer>
     </React.Fragment>
   );

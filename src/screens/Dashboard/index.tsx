@@ -32,7 +32,7 @@ const Dashboard = (props: RouteComponentProps) => {
           alignItems: 'center',
           height: '100vh',
           width: '100%',
-          backgroundColor: 'grey',
+          backgroundColor: '#e0e0e0',
         }}
       >
         <Textarea height="75vh" width="55vw"></Textarea>
