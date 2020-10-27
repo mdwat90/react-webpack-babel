@@ -9,9 +9,9 @@ import Textarea from '../../components/Textarea';
 const Dashboard = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
 
-  const localStorageUid = localStorage.getItem('bulletinUid');
+  const localStorageUID = localStorage.getItem('bulletinUID');
 
-  if (!localStorageUid) {
+  if (!localStorageUID) {
     return <Redirect noThrow to="/" />;
   }
 

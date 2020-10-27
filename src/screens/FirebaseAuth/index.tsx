@@ -6,13 +6,14 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
 import StyledContainer from './StyledContainer';
 import 'firebase/auth';
+import { Typography } from '@material-ui/core';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
   const { user, setUserDetails } = useContext(UserContext);
 
-  const localStorageUid = localStorage.getItem('bulletinUid');
+  const localStorageUID = localStorage.getItem('bulletinUID');
 
-  if (localStorageUid) {
+  if (localStorageUID) {
     return <Redirect noThrow to="dashboard" />;
   }
 
@@ -56,6 +57,9 @@ const FirebaseAuth = (props: RouteComponentProps) => {
 
   return (
     <StyledContainer>
+      {/* <Typography variant="h2" gutterBottom>
+        BULLETIN
+      </Typography> */}
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </StyledContainer>
   );
