@@ -4,6 +4,7 @@ import { UserContext } from '../../utils/userContext';
 import Navbar from '../../components/Navbar';
 
 import 'firebase/auth';
+import Textarea from '../../components/Textarea';
 
 const Dashboard = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
@@ -34,7 +35,7 @@ const Dashboard = (props: RouteComponentProps) => {
           backgroundColor: 'grey',
         }}
       >
-        Dashboard
+        <Textarea height="75vh" width="55vw"></Textarea>
       </div>
     </div>
   );
