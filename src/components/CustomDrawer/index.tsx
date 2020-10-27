@@ -26,6 +26,7 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
 
   return (
     <Drawer
+      variant="persistent"
       open={open}
       className={classes.drawer}
       classes={{
