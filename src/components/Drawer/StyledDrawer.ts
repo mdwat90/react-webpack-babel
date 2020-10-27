@@ -9,7 +9,7 @@ interface DrawerProps {
 
 const StyledDrawer = styled(Drawer)<DrawerProps>`
   & > div {
-    width: 25vw;
+    width: 200px;
   }
 
   display: flex;
