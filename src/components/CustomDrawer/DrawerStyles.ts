@@ -2,9 +2,8 @@ import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 
 export const drawerWidth = '225px';
 
-const DrawerStyles = makeStyles((theme: Theme) => {
-  console.log('THEME', theme);
-  return createStyles({
+const DrawerStyles = makeStyles((theme: Theme) =>
+  createStyles({
     drawer: {
       width: drawerWidth,
       flexShrink: 0,
@@ -31,7 +30,7 @@ const DrawerStyles = makeStyles((theme: Theme) => {
     hide: {
       display: 'none',
     },
-  });
-});
+  })
+);
 
 export default DrawerStyles;
