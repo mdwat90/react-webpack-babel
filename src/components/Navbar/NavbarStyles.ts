@@ -14,6 +14,7 @@ const NavbarStyles = makeStyles((theme: Theme) =>
       }),
     },
     appBarShift: {
+      zIndex: theme.zIndex.drawer - 1,
       marginLeft: drawerWidth,
       width: `calc(100% - ${drawerWidth})`,
       transition: theme.transitions.create(['width', 'margin'], {
