@@ -21,9 +21,6 @@ const NavbarStyles = makeStyles((theme: Theme) =>
         duration: theme.transitions.duration.enteringScreen,
       }),
     },
-    menuButton: {
-      marginRight: 36,
-    },
     toolBar: {
       display: 'flex',
       flexDirection: 'row',
