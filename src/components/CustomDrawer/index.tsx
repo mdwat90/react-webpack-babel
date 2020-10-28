@@ -18,20 +18,31 @@ import DrawerStyles from './DrawerStyles';
 import { signOut } from '../../helpers';
 
 import { RouteComponentProps, navigate } from '@reach/router';
+import LeftDrawer from './components/LeftDrawer';
+import RightDrawer from './components/RightDrawer';
 
 interface DrawerProps {
   open: any;
+  variant: any;
+  anchor: any;
   toggleDrawer: (bool: boolean) => void;
   navProps: RouteComponentProps;
 }
 
-const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
+const CustomDrawer = ({
+  open,
+  anchor,
+  variant,
+  toggleDrawer,
+  navProps,
+}: DrawerProps) => {
   const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
   const classes = DrawerStyles();
 
   return (
     <Drawer
-      variant="permanent"
+      variant={variant}
+      anchor={anchor}
       open={open}
       className={clsx(classes.drawer, {
         [classes.drawerOpen]: open,
@@ -44,74 +55,11 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
         }),
       }}
     >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          margin: '0px 10px',
-          minHeight: '64px',
-        }}
-      >
-        {open ? (
-          <IconButton onClick={() => toggleDrawer(false)}>
-            <ChevronLeftIcon />
-          </IconButton>
-        ) : (
-          <span></span>
-        )}
-      </div>
-      {open && <Divider />}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
-          height: '100vh',
-          padding: '25px 20px',
-        }}
-      >
-        {open && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '10vh',
-              padding: '25px 20px',
-            }}
-          >
-            <ul>
-              <li>ITEM 1</li>
-              <li>ITEM 2</li>
-              <li>ITEM 3</li>
-            </ul>
-          </div>
-        )}
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '10vh',
-          padding: '25px 20px',
-        }}
-      >
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={() => signOut()}
-          className={clsx({
-            [classes.hide]: !open,
-          })}
-        >
-          SIGN OUT
-        </Button>
-      </div>
+      {anchor === 'left' ? (
+        <LeftDrawer open={open} toggleDrawer={toggleDrawer}></LeftDrawer>
+      ) : (
+        <RightDrawer open={open} toggleDrawer={toggleDrawer}></RightDrawer>
+      )}
     </Drawer>
   );
 };
