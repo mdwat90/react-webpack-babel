@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { Router } from '@reach/router';
+import { createHistory, LocationProvider, Router } from '@reach/router';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
@@ -8,6 +8,7 @@ import { UserProvider } from './utils/userContext';
 import './App.css';
 import FirebaseAuth from './screens/FirebaseAuth';
 import Dashboard from './screens/Dashboard';
+import 'babel-polyfill';
 
 const App: React.FC = (): any => {
   var firebaseConfig = {

@@ -15,6 +15,7 @@ import * as firebase from 'firebase/app';
 import { UserContext } from '../../utils/userContext';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DrawerStyles from './DrawerStyles';
+import { signOut } from '../../helpers';
 
 import { RouteComponentProps, navigate } from '@reach/router';
 
@@ -27,25 +28,6 @@ interface DrawerProps {
 const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
   const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
   const classes = DrawerStyles();
-
-  const signOut = () => {
-    setLoading(true);
-    firebase
-      .auth()
-      .signOut()
-      .then(function () {
-        // Sign-out successful.
-        console.log('SIGNED OUT');
-        localStorage.clear();
-        navigate(`/`, { replace: true });
-        setLoading(false);
-      })
-      .catch(function (error) {
-        // An error happened.
-        console.log('SIGNOUT ERROR', error);
-        setLoading(false);
-      });
-  };
 
   return (
     <Drawer

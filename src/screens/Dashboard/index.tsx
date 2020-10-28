@@ -16,15 +16,17 @@ function getDocumentPPI() {
   return ppi;
 }
 
-console.log('Your PPI is ' + getDocumentPPI());
+console.log('PPI:::', getDocumentPPI());
+
+const ppi = getDocumentPPI();
 
 const getWidthInPixels = (paperWidth: number) => {
-  const width = paperWidth * getDocumentPPI();
-  return width;
+  const pixelWidth = paperWidth * ppi;
+  return pixelWidth;
 };
 const getHeightInPixels = (paperHeight: number) => {
-  const height = paperHeight * getDocumentPPI();
-  return height;
+  const pixelHeight = paperHeight * ppi;
+  return pixelHeight;
 };
 
 const height = getHeightInPixels(11);
@@ -56,7 +58,7 @@ const Dashboard = (props: RouteComponentProps) => {
           alignItems: 'center',
           padding: '10vh',
           backgroundColor: '#e0e0e0',
-          zoom: '70%',
+          zoom: '100%',
         }}
       >
         <Paper height={height} width={width}>

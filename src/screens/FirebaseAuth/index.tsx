@@ -1,13 +1,18 @@
 import React, { useState, useContext } from 'react';
 import * as firebase from 'firebase/app';
 import { UserContext } from '../../utils/userContext';
-import { RouteComponentProps, Redirect, navigate } from '@reach/router';
+import {
+  RouteComponentProps,
+  Redirect,
+  navigate,
+  useLocation,
+} from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
 import StyledContainer from './StyledContainer';
 import 'firebase/auth';
 import { Typography, CircularProgress } from '@material-ui/core';
-import Typing from 'react-typing-animation';
+import StyledTypist from './StyledTypist';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
   const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
@@ -59,9 +64,6 @@ const FirebaseAuth = (props: RouteComponentProps) => {
     },
   };
 
-  console.log(
-    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-  );
   return (
     <StyledContainer>
       <React.Fragment>
@@ -69,10 +71,10 @@ const FirebaseAuth = (props: RouteComponentProps) => {
           <CircularProgress />
         ) : (
           <Typography variant="h2" gutterBottom>
-            <Typing speed={125} loop={loading}>
+            <StyledTypist>
+              <StyledTypist.Delay ms={1000} />
               <span>BULLETIN</span>
-              <Typing.Reset count={1} delay={2000} />
-            </Typing>
+            </StyledTypist>
           </Typography>
         )}
         <StyledFirebaseAuth
