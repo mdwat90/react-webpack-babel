@@ -7,6 +7,8 @@ const NavbarStyles = makeStyles((theme: Theme) =>
       display: 'flex',
     },
     appBar: {
+      backgroundColor: '#c74600',
+      color: 'white',
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
