@@ -32,6 +32,7 @@ const FirebaseAuth = (props: RouteComponentProps) => {
 
   var uiConfig = {
     // signInSuccessUrl: '/dashboard',
+    signInFlow: 'popup',
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,

@@ -29,6 +29,8 @@ const Navbar = (props: RouteComponentProps) => {
 
   const hasPhoto = !!user.photoURL;
 
+  const firstLetter = user.displayName.charAt(0);
+
   checkLocalStorageExpiration(props);
 
   return (
@@ -66,7 +68,7 @@ const Navbar = (props: RouteComponentProps) => {
               />
             </div>
           ) : (
-            <span></span>
+            <Avatar>{firstLetter}</Avatar>
           )}
         </Toolbar>
       </AppBar>
