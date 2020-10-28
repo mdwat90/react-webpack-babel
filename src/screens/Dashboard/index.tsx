@@ -54,10 +54,9 @@ const Dashboard = (props: RouteComponentProps) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100%',
-          width: '100%',
           padding: '10vh',
           backgroundColor: '#e0e0e0',
+          zoom: '75%',
         }}
       >
         <Paper height={height} width={width}>
