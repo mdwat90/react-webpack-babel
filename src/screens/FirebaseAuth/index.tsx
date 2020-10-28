@@ -17,8 +17,6 @@ import StyledTypist from './StyledTypist';
 const FirebaseAuth = (props: RouteComponentProps) => {
   const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
 
-  console.log('LOADING:', loading);
-
   const localStorageUID = localStorage.getItem('bulletinUID');
 
   if (localStorageUID) {

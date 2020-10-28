@@ -63,7 +63,7 @@ const Navbar = (props: RouteComponentProps) => {
             </IconButton>
           </span>
           <span>
-            <Typography>Welcome {user.displayName}!</Typography>
+            <Typography>Welcome {user.displayName} 😎</Typography>
           </span>
           {hasPhoto ? (
             <IconButton
