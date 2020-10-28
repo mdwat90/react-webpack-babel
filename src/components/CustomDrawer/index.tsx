@@ -71,9 +71,9 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
       >
         {open && (
           <div>
-            <h2>Stuff</h2>
-            <h2>More Stuff</h2>
-            <h2>Nothing</h2>
+            <a href="www.google.com" target="_blank">
+              Google
+            </a>
           </div>
         )}
       </div>

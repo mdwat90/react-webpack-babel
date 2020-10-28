@@ -27,8 +27,8 @@ const getHeightInPixels = (paperHeight: number) => {
   return height;
 };
 
-const height = getHeightInPixels(8.3);
-const width = getWidthInPixels(5.8);
+const height = getHeightInPixels(11);
+const width = getWidthInPixels(8.5);
 
 const Dashboard = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
@@ -56,7 +56,7 @@ const Dashboard = (props: RouteComponentProps) => {
           alignItems: 'center',
           padding: '10vh',
           backgroundColor: '#e0e0e0',
-          zoom: '75%',
+          zoom: '70%',
         }}
       >
         <Paper height={height} width={width}>
