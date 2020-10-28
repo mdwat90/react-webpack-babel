@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, navigate } from '@reach/router';
 import clsx from 'clsx';
-import { checkLocalStorageExpiration } from '../../helpers';
 import { UserContext } from '../../utils/userContext';
 import {
   AppBar,
@@ -13,6 +12,7 @@ import {
   Divider,
   useTheme,
 } from '@material-ui/core';
+import * as firebase from 'firebase/app';
 
 import NavbarStyles from './NavbarStyles';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,13 +20,58 @@ import CustomDrawer from '../CustomDrawer';
 
 const Navbar = (props: RouteComponentProps) => {
   const classes = NavbarStyles();
-  const { user } = useContext(UserContext);
+  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const toggleDrawer = (toggle: boolean) => {
     setOpen(toggle);
   };
 
   const hasPhoto = !!user.photoURL;
+
+  const signOut = () => {
+    setLoading(true);
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        // Sign-out successful.
+        console.log('SIGNED OUT');
+        localStorage.clear();
+        navigate(`/`, { replace: true });
+        setLoading(false);
+      })
+      .catch(function (error) {
+        // An error happened.
+        console.log('SIGNOUT ERROR', error);
+        setLoading(false);
+      });
+  };
+
+  const checkLocalStorageExpiration = (
+    navigationProps: RouteComponentProps
+  ): any => {
+    let storageExpiration = localStorage.getItem('expiresAt');
+    let currTime = JSON.stringify(new Date().getTime());
+
+    // if the item doesn't exist, return null
+    if (!storageExpiration) return null;
+
+    storageExpiration = JSON.parse(storageExpiration);
+    currTime = JSON.parse(currTime);
+
+    // console.log('storage expiration:::', storageExpiration);
+    // console.log('current time:::', currTime);
+
+    // compare the expiration time with the current time
+    if (storageExpiration && currTime > storageExpiration) {
+      // If expired, delete the item from storage and signOut
+      localStorage.removeItem('expiresAt');
+      signOut();
+      return null;
+    }
+
+    return null;
+  };
 
   checkLocalStorageExpiration(props);
 

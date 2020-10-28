@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { signOut } from '../../helpers';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import {
   AppBar,
@@ -12,10 +11,12 @@ import {
   Divider,
   useTheme,
 } from '@material-ui/core';
+import * as firebase from 'firebase/app';
+import { UserContext } from '../../utils/userContext';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DrawerStyles from './DrawerStyles';
 
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, navigate } from '@reach/router';
 
 interface DrawerProps {
   open: any;
@@ -24,7 +25,27 @@ interface DrawerProps {
 }
 
 const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
+  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
   const classes = DrawerStyles();
+
+  const signOut = () => {
+    setLoading(true);
+    firebase
+      .auth()
+      .signOut()
+      .then(function () {
+        // Sign-out successful.
+        console.log('SIGNED OUT');
+        localStorage.clear();
+        navigate(`/`, { replace: true });
+        setLoading(false);
+      })
+      .catch(function (error) {
+        // An error happened.
+        console.log('SIGNOUT ERROR', error);
+        setLoading(false);
+      });
+  };
 
   return (
     <Drawer
@@ -90,7 +111,7 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
         <Button
           variant="outlined"
           color="secondary"
-          onClick={() => signOut(navProps)}
+          onClick={() => signOut()}
           className={clsx({
             [classes.hide]: !open,
           })}

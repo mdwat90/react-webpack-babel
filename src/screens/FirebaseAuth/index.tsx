@@ -10,8 +10,9 @@ import { Typography, CircularProgress } from '@material-ui/core';
 import Typing from 'react-typing-animation';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
-  const { user, setUserDetails } = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
+  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
+
+  console.log('LOADING:', loading);
 
   const localStorageUID = localStorage.getItem('bulletinUID');
 
@@ -58,24 +59,32 @@ const FirebaseAuth = (props: RouteComponentProps) => {
     },
   };
 
+  console.log(
+    <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+  );
   return (
     <StyledContainer>
-      {loading ? (
-        <CircularProgress />
-      ) : (
-        <React.Fragment>
+      <React.Fragment>
+        {loading ? (
+          <CircularProgress />
+        ) : (
           <Typography variant="h2" gutterBottom>
-            <Typing speed={125} loop>
+            <Typing speed={125} loop={loading}>
               <span>BULLETIN</span>
               <Typing.Reset count={1} delay={2000} />
             </Typing>
           </Typography>
-          <StyledFirebaseAuth
-            uiConfig={uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-        </React.Fragment>
-      )}
+        )}
+        <StyledFirebaseAuth
+          uiCallback={(ui) => {
+            if (ui.isPendingRedirect()) {
+              setLoading(true);
+            }
+          }}
+          uiConfig={uiConfig}
+          firebaseAuth={firebase.auth()}
+        />
+      </React.Fragment>
     </StyledContainer>
   );
 };
