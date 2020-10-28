@@ -50,7 +50,7 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
           alignItems: 'center',
           justifyContent: 'flex-end',
           margin: '0px 10px',
-          height: '10vh',
+          minHeight: '64px',
         }}
       >
         {open ? (
