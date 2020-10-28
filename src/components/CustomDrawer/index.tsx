@@ -73,10 +73,21 @@ const CustomDrawer = ({ open, toggleDrawer, navProps }: DrawerProps) => {
         }}
       >
         {open && (
-          <div>
-            <a href="www.google.com" target="_blank">
-              Google
-            </a>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '10vh',
+              padding: '25px 20px',
+            }}
+          >
+            <ul>
+              <li>ITEM 1</li>
+              <li>ITEM 2</li>
+              <li>ITEM 3</li>
+            </ul>
           </div>
         )}
       </div>
