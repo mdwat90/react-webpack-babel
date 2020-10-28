@@ -6,8 +6,8 @@ interface TextareaProps {
 }
 
 const StyledTextarea = styled.textarea<TextareaProps>`
-  height: ${(props) => props.height || '75vh'};
-  width: ${(props) => props.width || '50vw'};
+  height: ${(props) => props.height || '75vh'}px;
+  width: ${(props) => props.width || '50vw'}px;
   border: none;
   font-family: 'Roboto';
   resize: none;

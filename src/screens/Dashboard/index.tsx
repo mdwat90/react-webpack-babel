@@ -5,6 +5,30 @@ import Navbar from '../../components/Navbar';
 
 import 'firebase/auth';
 import Textarea from '../../components/Textarea';
+import Paper from '../../components/Paper';
+
+function getDocumentPPI() {
+  var elem = document.createElement('div');
+  elem.style.width = '1in';
+  document.body.appendChild(elem);
+  var ppi = elem.offsetWidth;
+  document.body.removeChild(elem);
+  return ppi;
+}
+
+console.log('Your PPI is ' + getDocumentPPI());
+
+const getWidthInPixels = (paperWidth: number) => {
+  const width = paperWidth * getDocumentPPI();
+  return width;
+};
+const getHeightInPixels = (paperHeight: number) => {
+  const height = paperHeight * getDocumentPPI();
+  return height;
+};
+
+const height = getHeightInPixels(8.3);
+const width = getWidthInPixels(5.8);
 
 const Dashboard = (props: RouteComponentProps) => {
   const { user } = useContext(UserContext);
@@ -18,7 +42,7 @@ const Dashboard = (props: RouteComponentProps) => {
   return (
     <div
       style={{
-        height: '100vh',
+        height: '100%',
         width: '100%',
       }}
     >
@@ -30,12 +54,15 @@ const Dashboard = (props: RouteComponentProps) => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          height: '100vh',
+          height: '100%',
           width: '100%',
+          padding: '10vh',
           backgroundColor: '#e0e0e0',
         }}
       >
-        <Textarea height="75vh" width="55vw"></Textarea>
+        <Paper height={height} width={width}>
+          <Textarea height={height} width={width}></Textarea>
+        </Paper>
       </div>
     </div>
   );
