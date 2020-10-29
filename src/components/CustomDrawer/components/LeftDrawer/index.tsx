@@ -16,40 +16,14 @@ const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
       <div className={classes.header} />
       {open && (
         <React.Fragment>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              margin: '0px 10px',
-              minHeight: '64px',
-            }}
-          >
+          <div className={classes.toggleIconHeader}>
             <IconButton onClick={() => toggleDrawer(false)}>
               <ChevronLeftIcon />
             </IconButton>
           </div>
           <Divider />
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              height: '100vh',
-              padding: '25px 20px',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '10vh',
-                padding: '25px 20px',
-              }}
-            >
+          <div className={classes.container}>
+            <div className={classes.textEditContainer}>
               <TextEdit />
             </div>
           </div>

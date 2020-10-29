@@ -15,11 +15,11 @@ const LeftDrawerStyles = makeStyles((theme: Theme) => ({
   toggleIconHeader: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     margin: '0px 10px',
     minHeight: '64px',
   },
-  tabsContainerOpen: {
+  container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -27,22 +27,13 @@ const LeftDrawerStyles = makeStyles((theme: Theme) => ({
     height: '100%',
     padding: '25px 20px',
   },
-  tabsContainerClosed: {
+  textEditContainer: {
     display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    height: '100%',
-    padding: '25px 10px',
-  },
-  signOutContainer: {
-    display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '25px 25px',
-  },
-  tabRoot: {
-    minWidth: '10px',
-    width: '10px',
+    height: '10vh',
+    padding: '25px 20px',
   },
 }));
 
