@@ -47,9 +47,7 @@ const Dashboard = (props: RouteComponentProps) => {
         <Navbar {...props} />
       </div>
       <div className={classes.contentContainer}>
-        <Document type={'default'} height={height} width={width}>
-          <Textarea height={height} width={width}></Textarea>
-        </Document>
+        <Document type={'default'} height={height} width={width} />
       </div>
     </div>
   );

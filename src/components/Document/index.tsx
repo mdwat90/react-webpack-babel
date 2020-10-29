@@ -1,15 +1,19 @@
 import React from 'react';
 import { StyledDiv } from '../styledComponents';
+import Textarea from '../Textarea';
 
 interface DocumentProps {
   type: any;
   height: any;
   width: any;
-  children: any;
 }
 
-const Document = ({ children, ...rest }: DocumentProps) => {
-  return <StyledDiv {...rest}>{children}</StyledDiv>;
+const Document = (props: DocumentProps) => {
+  return (
+    <StyledDiv {...props}>
+      <Textarea {...props}></Textarea>
+    </StyledDiv>
+  );
 };
 
 export default Document;
