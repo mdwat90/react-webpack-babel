@@ -11,7 +11,7 @@ export const NavBarContext = React.createContext({} as NavBarProps);
 
 export const NavBarProvider = ({ children }: any) => {
   const [openLeft, setOpenLeft] = useState(false);
-  const [openRight, setOpenRight] = useState(false);
+  const [openRight, setOpenRight] = useState(true);
   return (
     <NavBarContext.Provider
       value={{ openLeft, setOpenLeft, openRight, setOpenRight }}

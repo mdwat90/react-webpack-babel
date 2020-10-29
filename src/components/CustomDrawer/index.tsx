@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import { Drawer } from '@material-ui/core';
-import { UserContext } from '../../utils/userContext';
 import DrawerStyles from './DrawerStyles';
 
 import { RouteComponentProps } from '@reach/router';
@@ -16,13 +15,7 @@ interface DrawerProps {
   navProps: RouteComponentProps;
 }
 
-const CustomDrawer = ({
-  open,
-  anchor,
-  variant,
-  toggleDrawer,
-  navProps,
-}: DrawerProps) => {
+const CustomDrawer = ({ open, anchor, variant, toggleDrawer }: DrawerProps) => {
   const classes = DrawerStyles();
 
   return (

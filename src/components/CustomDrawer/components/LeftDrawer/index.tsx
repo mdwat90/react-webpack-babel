@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { IconButton, Divider } from '@material-ui/core';
-import { UserContext } from '../../../../utils/userContext';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DrawerStyles from '../../DrawerStyles';
 
 interface DrawerProps {
   open: any;

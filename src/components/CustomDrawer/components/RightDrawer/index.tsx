@@ -12,15 +12,10 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import { signOut } from '../../../../helpers';
 import { navigate } from '@reach/router';
 import { RightDrawerContext } from '../../../../utils/rightDrawerContext';
+
 interface DrawerProps {
   open: any;
   toggleDrawer: (bool: boolean) => void;
-}
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: any;
-  value: any;
 }
 
 const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
