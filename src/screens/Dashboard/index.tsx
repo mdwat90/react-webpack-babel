@@ -29,6 +29,7 @@ const getHeightInPixels = (paperHeight: number) => {
   return pixelHeight;
 };
 
+// TODO: manage selected height/width (document 'type') in left drawer
 const height = getHeightInPixels(11);
 const width = getWidthInPixels(8.5);
 
