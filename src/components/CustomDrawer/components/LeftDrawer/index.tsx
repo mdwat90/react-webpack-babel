@@ -1,6 +1,7 @@
 import React from 'react';
 import { IconButton, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import TextEdit from '../../../TextEdit';
 
 interface DrawerProps {
   open: any;
@@ -54,11 +55,7 @@ const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
               padding: '25px 20px',
             }}
           >
-            <ul>
-              <li>ITEM 1</li>
-              <li>ITEM 2</li>
-              <li>ITEM 3</li>
-            </ul>
+            <TextEdit />
           </div>
         )}
       </div>
