@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import { UserContext } from '../utils/userContext';
 import { RouteComponentProps, navigate } from '@reach/router';
 import * as firebase from 'firebase/app';
 
@@ -43,9 +41,6 @@ export const checkLocalStorageExpiration = (
 
   storageExpiration = JSON.parse(storageExpiration);
   currTime = JSON.parse(currTime);
-
-  // console.log('storage expiration:::', storageExpiration);
-  // console.log('current time:::', currTime);
 
   // compare the expiration time with the current time
   if (storageExpiration && currTime > storageExpiration) {

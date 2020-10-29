@@ -1,23 +1,10 @@
 import React, { useContext } from 'react';
 import clsx from 'clsx';
-import {
-  AppBar,
-  Avatar,
-  Button,
-  Toolbar,
-  Typography,
-  Drawer,
-  IconButton,
-  Divider,
-  useTheme,
-} from '@material-ui/core';
-import * as firebase from 'firebase/app';
+import { Drawer } from '@material-ui/core';
 import { UserContext } from '../../utils/userContext';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DrawerStyles from './DrawerStyles';
-import { signOut } from '../../helpers';
 
-import { RouteComponentProps, navigate } from '@reach/router';
+import { RouteComponentProps } from '@reach/router';
 import LeftDrawer from './components/LeftDrawer';
 import RightDrawer from './components/RightDrawer';
 
@@ -36,7 +23,6 @@ const CustomDrawer = ({
   toggleDrawer,
   navProps,
 }: DrawerProps) => {
-  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
   const classes = DrawerStyles();
 
   return (

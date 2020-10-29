@@ -1,19 +1,76 @@
 import React, { useContext } from 'react';
-import clsx from 'clsx';
-import { Button, IconButton, Divider } from '@material-ui/core';
-import { UserContext } from '../../../../utils/userContext';
+import {
+  Button,
+  IconButton,
+  Divider,
+  Tab,
+  Tabs,
+  makeStyles,
+  Theme,
+} from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import DrawerStyles from '../../DrawerStyles';
 import { signOut } from '../../../../helpers';
-
+import { navigate } from '@reach/router';
+import { RightDrawerContext } from '../../../../utils/rightDrawerContext';
 interface DrawerProps {
   open: any;
   toggleDrawer: (bool: boolean) => void;
 }
 
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: any;
+  value: any;
+}
+
 const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
-  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
-  const classes = DrawerStyles();
+  const { value, setValue } = useContext(RightDrawerContext);
+
+  const useStyles = makeStyles((theme: Theme) => ({
+    root: {
+      flexGrow: 1,
+      backgroundColor: theme.palette.background.paper,
+      display: 'flex',
+    },
+    tabs: {
+      borderRight: `1px solid ${theme.palette.divider}`,
+    },
+  }));
+
+  const VerticalTabs = () => {
+    const classes = useStyles();
+
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+      setValue(newValue);
+    };
+
+    return (
+      <div className={classes.root}>
+        <Tabs
+          orientation="vertical"
+          variant="scrollable"
+          value={value}
+          aria-label="Vertical tabs example"
+          className={classes.tabs}
+        >
+          <Tab
+            label="Dashboard"
+            onClick={(e) => {
+              handleChange(e, 0);
+              navigate('/dashboard');
+            }}
+          />
+          <Tab
+            label="History"
+            onClick={(e) => {
+              handleChange(e, 1);
+              navigate('/history');
+            }}
+          />
+        </Tabs>
+      </div>
+    );
+  };
 
   return (
     <React.Fragment>
@@ -46,49 +103,27 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
           flexDirection: 'column',
           alignItems: 'flex-start',
           justifyContent: 'center',
-          height: '100vh',
+          height: '100%',
           padding: '25px 20px',
         }}
       >
-        {open && (
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '10vh',
-              padding: '25px 20px',
-            }}
-          >
-            <ul>
-              <li>ITEM 1</li>
-              <li>ITEM 2</li>
-              <li>ITEM 3</li>
-            </ul>
-          </div>
-        )}
-      </div>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '10vh',
-          padding: '25px 20px',
-        }}
-      >
-        <Button
-          variant="outlined"
-          color="secondary"
-          onClick={() => signOut()}
-          className={clsx({
-            [classes.hide]: !open,
-          })}
+        {open && <VerticalTabs />}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '25px 25px',
+          }}
         >
-          SIGN OUT
-        </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => signOut()}
+          >
+            SIGN OUT
+          </Button>
+        </div>
       </div>
     </React.Fragment>
   );

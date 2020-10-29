@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import { createHistory, LocationProvider, Router } from '@reach/router';
+import { Router } from '@reach/router';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
@@ -8,7 +8,10 @@ import { UserProvider } from './utils/userContext';
 import './App.css';
 import FirebaseAuth from './screens/FirebaseAuth';
 import Dashboard from './screens/Dashboard';
+import History from './screens/History';
 import 'babel-polyfill';
+import { NavBarProvider } from './utils/navBarContext';
+import { RightDrawerProvider } from './utils/rightDrawerContext';
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -34,10 +37,15 @@ const App: React.FC = (): any => {
 
   return (
     <UserProvider>
-      <Router>
-        <FirebaseAuth path="/" />
-        <Dashboard path="dashboard" />
-      </Router>
+      <NavBarProvider>
+        <RightDrawerProvider>
+          <Router>
+            <FirebaseAuth path="/" />
+            <Dashboard path="dashboard" />
+            <History path="history" />
+          </Router>
+        </RightDrawerProvider>
+      </NavBarProvider>
     </UserProvider>
   );
 };

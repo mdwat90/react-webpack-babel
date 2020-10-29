@@ -1,30 +1,28 @@
-import React, { useState, useContext } from 'react';
-import { RouteComponentProps, navigate } from '@reach/router';
+import React, { useContext } from 'react';
+import { RouteComponentProps } from '@reach/router';
 import clsx from 'clsx';
 import { UserContext } from '../../utils/userContext';
 import {
   AppBar,
   Avatar,
-  Button,
   Toolbar,
   Typography,
   IconButton,
-  Divider,
-  useTheme,
 } from '@material-ui/core';
-import * as firebase from 'firebase/app';
 
 import NavbarStyles from './NavbarStyles';
 import MenuIcon from '@material-ui/icons/Menu';
 import CustomDrawer from '../CustomDrawer';
-import ClearIcon from '@material-ui/icons/Clear';
 import { checkLocalStorageExpiration } from '../../helpers';
+import { NavBarContext } from '../../utils/navBarContext';
 
 const Navbar = (props: RouteComponentProps) => {
   const classes = NavbarStyles();
-  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
-  const [openLeft, setOpenLeft] = useState(false);
-  const [openRight, setOpenRight] = useState(false);
+  const { user } = useContext(UserContext);
+  const { openLeft, setOpenLeft, openRight, setOpenRight } = useContext(
+    NavBarContext
+  );
+
   const toggleLeftDrawer = (toggle: boolean) => {
     setOpenLeft(toggle);
   };
@@ -40,17 +38,7 @@ const Navbar = (props: RouteComponentProps) => {
 
   return (
     <React.Fragment>
-      <AppBar
-        position="fixed"
-        color="default"
-        className={clsx(
-          classes.appBar
-          //   {
-          //   [classes.appBarShiftLeft]: openLeft,
-          //   [classes.appBarShiftRight]: openRight,
-          // }
-        )}
-      >
+      <AppBar position="fixed" color="default" className={clsx(classes.appBar)}>
         <Toolbar className={classes.toolBar}>
           <span>
             <IconButton
@@ -63,7 +51,7 @@ const Navbar = (props: RouteComponentProps) => {
             </IconButton>
           </span>
           <span>
-            <Typography>Welcome {user.displayName} 😎</Typography>
+            <Typography>Welcome, {user.displayName} 😎</Typography>
           </span>
           {hasPhoto ? (
             <IconButton

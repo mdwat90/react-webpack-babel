@@ -1,12 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import * as firebase from 'firebase/app';
 import { UserContext } from '../../utils/userContext';
-import {
-  RouteComponentProps,
-  Redirect,
-  navigate,
-  useLocation,
-} from '@reach/router';
+import { RouteComponentProps, Redirect, navigate } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
 import StyledContainer from './StyledContainer';
@@ -15,7 +10,7 @@ import { Typography, CircularProgress } from '@material-ui/core';
 import StyledTypist from './StyledTypist';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
-  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
+  const { setUserDetails, loading, setLoading } = useContext(UserContext);
 
   const localStorageUID = localStorage.getItem('bulletinUID');
 

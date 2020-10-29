@@ -1,10 +1,8 @@
 import React, { useContext } from 'react';
-import clsx from 'clsx';
-import { Button, IconButton, Divider } from '@material-ui/core';
+import { IconButton, Divider } from '@material-ui/core';
 import { UserContext } from '../../../../utils/userContext';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DrawerStyles from '../../DrawerStyles';
-import { signOut } from '../../../../helpers';
 
 interface DrawerProps {
   open: any;
@@ -12,9 +10,6 @@ interface DrawerProps {
 }
 
 const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
-  const { user, setUserDetails, loading, setLoading } = useContext(UserContext);
-  const classes = DrawerStyles();
-
   return (
     <React.Fragment>
       <div
