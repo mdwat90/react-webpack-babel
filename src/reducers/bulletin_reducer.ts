@@ -6,9 +6,14 @@ import produce from 'immer';
 // import { AUTH_LOGOUT } from '../actions/types';
 
 export const INITIAL_STATE = {
-  current: null,
+  currentDocument: null,
   authenticated: false,
   user: null,
+  history: [],
+  leftNavOpen: false,
+  rightNavOpen: false,
+  rightNavTabValue: null,
+  loading: false,
 };
 const reducer = (state = INITIAL_STATE, action: any) =>
   produce(state, (draft) => {
