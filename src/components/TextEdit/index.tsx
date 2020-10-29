@@ -14,20 +14,26 @@ const TextEdit = () => {
   return (
     <React.Fragment>
       <div>
-        <FormatBoldIcon />
-        <FormatItalicIcon />
-        <FormatUnderlinedIcon />
+        <FormatBoldIcon onClick={() => console.log('BOLD')} />
+        <FormatItalicIcon onClick={() => console.log('ITALICIZE')} />
+        <FormatUnderlinedIcon onClick={() => console.log('UNDERLINE')} />
       </div>
       <div>
-        <FormatAlignLeftIcon />
-        <FormatAlignCenterIcon />
-        <FormatAlignRightIcon />
-        <FormatAlignJustifyIcon />
+        <FormatAlignLeftIcon onClick={() => console.log('LEFT ALIGN')} />
+        <FormatAlignCenterIcon onClick={() => console.log('CENTER ALIGN')} />
+        <FormatAlignRightIcon onClick={() => console.log('RIGHT ALIGN')} />
+        <FormatAlignJustifyIcon onClick={() => console.log('JUSTIFY')} />
       </div>
       <div>
-        <VerticalAlignBottomIcon />
-        <VerticalAlignCenterIcon />
-        <VerticalAlignTopIcon />
+        <VerticalAlignBottomIcon
+          onClick={() => console.log('VERTICAL ALIGN BOTTOM')}
+        />
+        <VerticalAlignCenterIcon
+          onClick={() => console.log('VERTICAL ALIGN CENTER')}
+        />
+        <VerticalAlignTopIcon
+          onClick={() => console.log('VERTICAL ALIGN TOP')}
+        />
       </div>
     </React.Fragment>
   );
