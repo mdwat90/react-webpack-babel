@@ -8,7 +8,6 @@ import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
 
-import './App.css';
 import FirebaseAuth from './screens/FirebaseAuth';
 import Dashboard from './screens/Dashboard';
 import History from './screens/History';

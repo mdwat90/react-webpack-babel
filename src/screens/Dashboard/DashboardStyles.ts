@@ -1,4 +1,4 @@
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import { Theme, makeStyles } from '@material-ui/core/styles';
 
 const DashboardStyles = makeStyles((theme: Theme) => ({
   dashContainer: {

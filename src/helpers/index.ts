@@ -6,13 +6,11 @@ export const signOut = () => {
     .auth()
     .signOut()
     .then(function () {
-      // Sign-out successful.
       console.log('SIGNED OUT');
       localStorage.clear();
       navigate('/', { replace: true });
     })
     .catch(function (error) {
-      // An error happened.
       console.log('SIGNOUT ERROR', error);
     });
 };

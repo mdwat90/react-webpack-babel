@@ -6,7 +6,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
 import FirebaseAuthStyles from './FirebaseAuthStyles';
 import { Typography, CircularProgress } from '@material-ui/core';
-import StyledTypist from './StyledTypist';
+import { StyledTypist } from '../../components/styledComponents';
 import 'firebase/auth';
 
 const FirebaseAuth = (props: RouteComponentProps) => {

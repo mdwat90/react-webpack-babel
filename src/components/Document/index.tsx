@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledDiv from '../styledComponents/StyledDiv';
+import { StyledDiv } from '../styledComponents';
 
 interface DocumentProps {
   type: any;

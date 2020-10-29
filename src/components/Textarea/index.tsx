@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledTextarea from '../styledComponents/StyledTextarea';
+import { StyledTextarea } from '../styledComponents';
 
 interface TextareaProps {
   height: any;

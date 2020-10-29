@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { RouteComponentProps, Redirect } from '@reach/router';
-import { UserContext } from '../../utils/userContext';
 import Navbar from '../../components/Navbar';
 import DashboardStyles from './DashboardStyles';
 

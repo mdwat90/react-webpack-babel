@@ -1,13 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  Button,
-  IconButton,
-  Divider,
-  Tab,
-  Tabs,
-  makeStyles,
-  Theme,
-} from '@material-ui/core';
+import { Button, IconButton, Divider, Tab, Tabs } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
