@@ -1,6 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import { Router } from '@reach/router';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import BulletinReducer from './reducers/bulletin_reducer';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
@@ -11,6 +14,8 @@ import Dashboard from './screens/Dashboard';
 import History from './screens/History';
 import 'babel-polyfill';
 import CombinedProviders from './utils/CombinedProviders';
+
+const store = createStore(BulletinReducer);
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -35,13 +40,15 @@ const App: React.FC = (): any => {
   }
 
   return (
-    <CombinedProviders>
-      <Router>
-        <FirebaseAuth path="/" />
-        <Dashboard path="dashboard" />
-        <History path="history" />
-      </Router>
-    </CombinedProviders>
+    <Provider store={store}>
+      <CombinedProviders>
+        <Router>
+          <FirebaseAuth path="/" />
+          <Dashboard path="dashboard" />
+          <History path="history" />
+        </Router>
+      </CombinedProviders>
+    </Provider>
   );
 };
 

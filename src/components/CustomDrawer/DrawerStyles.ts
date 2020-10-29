@@ -1,6 +1,6 @@
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 
-export const drawerWidth = '225px';
+export const drawerWidth = '200px';
 
 const DrawerStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -87,7 +87,7 @@ const Navbar = (props: RouteComponentProps) => {
       />
       <CustomDrawer
         open={openRight}
-        variant="persistent"
+        variant="permanent"
         anchor="right"
         toggleDrawer={toggleRightDrawer}
         navProps={props}
