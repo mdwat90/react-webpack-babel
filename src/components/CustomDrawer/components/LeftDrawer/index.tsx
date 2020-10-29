@@ -2,6 +2,7 @@ import React from 'react';
 import { IconButton, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import TextEdit from '../../../TextEdit';
+import LeftDrawerStyles from './LeftDrawerStyles';
 
 interface DrawerProps {
   open: any;
@@ -9,56 +10,51 @@ interface DrawerProps {
 }
 
 const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
+  const classes = LeftDrawerStyles();
   return (
     <React.Fragment>
-      <div
-        style={{
-          minHeight: '64px',
-        }}
-      ></div>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-          margin: '0px 10px',
-          minHeight: '64px',
-        }}
-      >
-        {open ? (
-          <IconButton onClick={() => toggleDrawer(false)}>
-            <ChevronLeftIcon />
-          </IconButton>
-        ) : (
-          <span></span>
-        )}
-      </div>
-      {open && <Divider />}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
-          height: '100vh',
-          padding: '25px 20px',
-        }}
-      >
-        {open && (
+      <div className={classes.header} />
+      {open && (
+        <React.Fragment>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              margin: '0px 10px',
+              minHeight: '64px',
+            }}
+          >
+            <IconButton onClick={() => toggleDrawer(false)}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </div>
+          <Divider />
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               justifyContent: 'center',
-              height: '10vh',
+              height: '100vh',
               padding: '25px 20px',
             }}
           >
-            <TextEdit />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '10vh',
+                padding: '25px 20px',
+              }}
+            >
+              <TextEdit />
+            </div>
           </div>
-        )}
-      </div>
+        </React.Fragment>
+      )}
     </React.Fragment>
   );
 };

@@ -15,62 +15,17 @@ import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
 import { signOut } from '../../../../helpers';
 import { navigate } from '@reach/router';
 import { RightDrawerContext } from '../../../../utils/rightDrawerContext';
+import RightDrawerStyles from './RightDrawerStyles';
 
 interface DrawerProps {
   open: any;
   toggleDrawer: (bool: boolean) => void;
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    display: 'flex',
-  },
-  tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
-  },
-  header: {
-    minHeight: '64px',
-  },
-  toggleIconHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    margin: '0px 10px',
-    minHeight: '64px',
-  },
-  tabsContainerOpen: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    height: '100%',
-    padding: '25px 20px',
-  },
-  tabsContainerClosed: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    height: '100%',
-    padding: '25px 10px',
-  },
-  signOutContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '25px 25px',
-  },
-  tabRoot: {
-    minWidth: '10px',
-    width: '10px',
-  },
-}));
-
 const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
   const { value, setValue } = useContext(RightDrawerContext);
 
-  const classes = useStyles();
+  const classes = RightDrawerStyles();
 
   const VerticalTabs = ({ open }: any) => {
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
@@ -111,7 +66,7 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
 
   return (
     <React.Fragment>
-      <div className={classes.header}></div>
+      <div className={classes.header} />
       {open ? (
         <React.Fragment>
           <div className={classes.toggleIconHeader}>

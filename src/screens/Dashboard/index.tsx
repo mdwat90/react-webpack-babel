@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 import { RouteComponentProps, Redirect } from '@reach/router';
 import { UserContext } from '../../utils/userContext';
 import Navbar from '../../components/Navbar';
+import DashboardStyles from './DashboardStyles';
 
 import 'firebase/auth';
 import Textarea from '../../components/Textarea';
-import Paper from '../../components/Paper';
+import Document from '../../components/Document';
 
 function getDocumentPPI() {
   var elem = document.createElement('div');
@@ -33,7 +34,7 @@ const height = getHeightInPixels(11);
 const width = getWidthInPixels(8.5);
 
 const Dashboard = (props: RouteComponentProps) => {
-  const { user } = useContext(UserContext);
+  const classes = DashboardStyles();
 
   const localStorageUID = localStorage.getItem('bulletinUID');
 
@@ -42,28 +43,14 @@ const Dashboard = (props: RouteComponentProps) => {
   }
 
   return (
-    <div
-      style={{
-        height: '100%',
-        width: '100%',
-      }}
-    >
+    <div className={classes.dashContainer}>
       <div>
         <Navbar {...props} />
       </div>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          padding: '10vh',
-          backgroundColor: '#e0e0e0',
-          zoom: '100%',
-        }}
-      >
-        <Paper height={height} width={width}>
+      <div className={classes.contentContainer}>
+        <Document type={'default'} height={height} width={width}>
           <Textarea height={height} width={width}></Textarea>
-        </Paper>
+        </Document>
       </div>
     </div>
   );

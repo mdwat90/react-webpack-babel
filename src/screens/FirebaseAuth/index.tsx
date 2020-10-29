@@ -4,13 +4,14 @@ import { UserContext } from '../../utils/userContext';
 import { RouteComponentProps, Redirect, navigate } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
-import StyledContainer from './StyledContainer';
-import 'firebase/auth';
+import FirebaseAuthStyles from './FirebaseAuthStyles';
 import { Typography, CircularProgress } from '@material-ui/core';
 import StyledTypist from './StyledTypist';
+import 'firebase/auth';
 
 const FirebaseAuth = (props: RouteComponentProps) => {
   const { setUserDetails, loading, setLoading } = useContext(UserContext);
+  const classes = FirebaseAuthStyles();
 
   const localStorageUID = localStorage.getItem('bulletinUID');
 
@@ -59,7 +60,7 @@ const FirebaseAuth = (props: RouteComponentProps) => {
   };
 
   return (
-    <StyledContainer>
+    <div className={classes.authContainer}>
       <React.Fragment>
         {loading ? (
           <CircularProgress />
@@ -81,7 +82,7 @@ const FirebaseAuth = (props: RouteComponentProps) => {
           firebaseAuth={firebase.auth()}
         />
       </React.Fragment>
-    </StyledContainer>
+    </div>
   );
 };
 

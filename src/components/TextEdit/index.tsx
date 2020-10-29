@@ -1,4 +1,5 @@
 import React from 'react';
+import TextEditStyles from './TextEditStyles';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
@@ -11,27 +12,52 @@ import VerticalAlignCenterIcon from '@material-ui/icons/VerticalAlignCenter';
 import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
 
 const TextEdit = () => {
+  const classes = TextEditStyles();
   return (
     <React.Fragment>
       <div>
-        <FormatBoldIcon onClick={() => console.log('BOLD')} />
-        <FormatItalicIcon onClick={() => console.log('ITALICIZE')} />
-        <FormatUnderlinedIcon onClick={() => console.log('UNDERLINE')} />
+        <FormatBoldIcon
+          className={classes.icon}
+          onClick={() => console.log('BOLD')}
+        />
+        <FormatItalicIcon
+          className={classes.icon}
+          onClick={() => console.log('ITALICIZE')}
+        />
+        <FormatUnderlinedIcon
+          className={classes.icon}
+          onClick={() => console.log('UNDERLINE')}
+        />
       </div>
       <div>
-        <FormatAlignLeftIcon onClick={() => console.log('LEFT ALIGN')} />
-        <FormatAlignCenterIcon onClick={() => console.log('CENTER ALIGN')} />
-        <FormatAlignRightIcon onClick={() => console.log('RIGHT ALIGN')} />
-        <FormatAlignJustifyIcon onClick={() => console.log('JUSTIFY')} />
+        <FormatAlignLeftIcon
+          className={classes.icon}
+          onClick={() => console.log('LEFT ALIGN')}
+        />
+        <FormatAlignCenterIcon
+          className={classes.icon}
+          onClick={() => console.log('CENTER ALIGN')}
+        />
+        <FormatAlignRightIcon
+          className={classes.icon}
+          onClick={() => console.log('RIGHT ALIGN')}
+        />
+        <FormatAlignJustifyIcon
+          className={classes.icon}
+          onClick={() => console.log('JUSTIFY')}
+        />
       </div>
       <div>
         <VerticalAlignBottomIcon
+          className={classes.icon}
           onClick={() => console.log('VERTICAL ALIGN BOTTOM')}
         />
         <VerticalAlignCenterIcon
+          className={classes.icon}
           onClick={() => console.log('VERTICAL ALIGN CENTER')}
         />
         <VerticalAlignTopIcon
+          className={classes.icon}
           onClick={() => console.log('VERTICAL ALIGN TOP')}
         />
       </div>
