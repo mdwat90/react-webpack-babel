@@ -57,7 +57,7 @@ const History = (props: RouteComponentProps) => {
           zoom: '100%',
         }}
       >
-        <Typography variant="h2">HISTORY PAGE</Typography>
+        <Typography variant="h2">HISTORY</Typography>
       </div>
     </div>
   );
