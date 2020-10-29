@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import clsx from 'clsx';
 import {
   Button,
   IconButton,
@@ -7,7 +6,6 @@ import {
   Tab,
   Tabs,
   makeStyles,
-  withStyles,
   Theme,
 } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -23,27 +21,58 @@ interface DrawerProps {
   toggleDrawer: (bool: boolean) => void;
 }
 
+const useStyles = makeStyles((theme: Theme) => ({
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
+    display: 'flex',
+  },
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+  },
+  header: {
+    minHeight: '64px',
+  },
+  toggleIconHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    margin: '0px 10px',
+    minHeight: '64px',
+  },
+  tabsContainerOpen: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    height: '100%',
+    padding: '25px 20px',
+  },
+  tabsContainerClosed: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+    height: '100%',
+    padding: '25px 10px',
+  },
+  signOutContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '25px 25px',
+  },
+  tabRoot: {
+    minWidth: '10px',
+    width: '10px',
+  },
+}));
+
 const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
   const { value, setValue } = useContext(RightDrawerContext);
 
-  const useStyles = makeStyles((theme: Theme) => ({
-    root: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.paper,
-      display: 'flex',
-    },
-    tabs: {
-      borderRight: `1px solid ${theme.palette.divider}`,
-    },
-    tabRoot: {
-      minWidth: '10px',
-      width: '10px',
-    },
-  }));
+  const classes = useStyles();
 
   const VerticalTabs = ({ open }: any) => {
-    const classes = useStyles();
-
     const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
       setValue(newValue);
     };
@@ -82,22 +111,10 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
 
   return (
     <React.Fragment>
-      <div
-        style={{
-          minHeight: '64px',
-        }}
-      ></div>
+      <div className={classes.header}></div>
       {open ? (
         <React.Fragment>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              margin: '0px 10px',
-              minHeight: '64px',
-            }}
-          >
+          <div className={classes.toggleIconHeader}>
             <IconButton onClick={() => toggleDrawer(false)}>
               <ChevronRightIcon />
             </IconButton>
@@ -105,25 +122,9 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
 
           <Divider />
 
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              height: '100%',
-              padding: '25px 20px',
-            }}
-          >
+          <div className={classes.tabsContainerOpen}>
             <VerticalTabs open={open} />
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '25px 25px',
-              }}
-            >
+            <div className={classes.signOutContainer}>
               <Button
                 variant="outlined"
                 color="secondary"
@@ -136,29 +137,13 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
         </React.Fragment>
       ) : (
         <React.Fragment>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              margin: '0px 10px',
-              minHeight: '64px',
-            }}
-          >
+          <div className={classes.toggleIconHeader}>
             <IconButton onClick={() => toggleDrawer(true)}>
               <ChevronLeftIcon />
             </IconButton>
           </div>
           <Divider />
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-              height: '100%',
-              padding: '25px 10px',
-            }}
-          >
+          <div className={classes.tabsContainerClosed}>
             <VerticalTabs open={open} />
           </div>
         </React.Fragment>
