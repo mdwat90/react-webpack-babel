@@ -4,14 +4,13 @@ import { Router } from '@reach/router';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
-import { UserProvider } from './utils/userContext';
+
 import './App.css';
 import FirebaseAuth from './screens/FirebaseAuth';
 import Dashboard from './screens/Dashboard';
 import History from './screens/History';
 import 'babel-polyfill';
-import { NavBarProvider } from './utils/navBarContext';
-import { RightDrawerProvider } from './utils/rightDrawerContext';
+import CombinedProviders from './utils/CombinedProviders';
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -36,17 +35,13 @@ const App: React.FC = (): any => {
   }
 
   return (
-    <UserProvider>
-      <NavBarProvider>
-        <RightDrawerProvider>
-          <Router>
-            <FirebaseAuth path="/" />
-            <Dashboard path="dashboard" />
-            <History path="history" />
-          </Router>
-        </RightDrawerProvider>
-      </NavBarProvider>
-    </UserProvider>
+    <CombinedProviders>
+      <Router>
+        <FirebaseAuth path="/" />
+        <Dashboard path="dashboard" />
+        <History path="history" />
+      </Router>
+    </CombinedProviders>
   );
 };
 
