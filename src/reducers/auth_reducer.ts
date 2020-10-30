@@ -2,7 +2,7 @@ import produce from 'immer';
 import {
   AUTHENTICATE,
   SET_USER,
-  SIGN_OUT,
+  USER_LOGOUT,
 } from '../actions/auth_actions/types';
 
 export const INITIAL_STATE = {
@@ -21,7 +21,7 @@ const authReducer = (state = INITIAL_STATE, action: any) =>
         draft.userDetails = action.payload;
         break;
 
-      case SIGN_OUT:
+      case USER_LOGOUT:
         draft.signedOut = action.payload;
         break;
 

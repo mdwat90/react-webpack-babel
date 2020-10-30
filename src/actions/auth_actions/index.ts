@@ -1,4 +1,4 @@
-import { AUTHENTICATE, SET_USER, SIGN_OUT } from './types';
+import { AUTHENTICATE, SET_USER, USER_LOGOUT } from './types';
 
 export const authenticate = (authState: any) => {
   return {
@@ -14,9 +14,9 @@ export const setUserDetails = (userDetails: any) => {
   };
 };
 
-export const signOutUser = (signOutState: any) => {
+export const signOutUser = () => {
   return {
-    type: SIGN_OUT,
-    payload: signOutState,
+    type: USER_LOGOUT,
+    payload: null,
   };
 };

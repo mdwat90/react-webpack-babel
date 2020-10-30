@@ -1,5 +1,7 @@
 import { RouteComponentProps, navigate } from '@reach/router';
 import * as firebase from 'firebase/app';
+import { store } from '../utils/configureStore';
+import { signOutUser } from '../actions/auth_actions';
 
 export const signOut = () => {
   firebase
@@ -9,6 +11,7 @@ export const signOut = () => {
       console.log('SIGNED OUT');
       localStorage.clear();
       navigate('/', { replace: true });
+      store.dispatch(signOutUser());
     })
     .catch(function (error) {
       console.log('SIGNOUT ERROR', error);
@@ -45,7 +48,6 @@ export const checkLocalStorageExpiration = (
     // If expired, delete the item from storage and signOut
     localStorage.removeItem('expiresAt');
     signOut();
-    return null;
   }
 
   return null;
