@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader';
 import { Router } from '@reach/router';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import BulletinReducer from './reducers/bulletin_reducer';
+import reducers from './reducers';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
@@ -14,7 +14,11 @@ import History from './screens/History';
 import 'babel-polyfill';
 import CombinedProviders from './utils/CombinedProviders';
 
-const store = createStore(BulletinReducer);
+const store = createStore(
+  reducers,
+  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const App: React.FC = (): any => {
   var firebaseConfig = {

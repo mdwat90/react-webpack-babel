@@ -43,6 +43,7 @@
     "prettier-tslint": "^0.4.2",
     "react-hot-loader": "^4.13.0",
     "redux-devtools": "^3.7.0",
+    "redux-devtools-extension": "^2.13.8",
     "sass": "^1.27.0",
     "sass-loader": "^10.0.3",
     "source-map-loader": "^1.1.1",

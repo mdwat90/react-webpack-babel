@@ -15,6 +15,7 @@ const TextEdit = () => {
   const classes = TextEditStyles();
   return (
     <React.Fragment>
+      {/* TODO: make this a ToggleButtonGroup / ToggleButtons from material UI */}
       <div>
         <FormatBoldIcon
           className={classes.icon}

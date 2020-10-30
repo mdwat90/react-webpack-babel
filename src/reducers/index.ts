@@ -1,12 +1,8 @@
-const INITIAL_STATE = {
-  currentDoc: null,
-  authenticated: false,
-  userInfo: null,
-};
-
 import { combineReducers } from 'redux';
-// import todoLists from './todoLists'
+import authReducer from './auth_reducer';
+import mainReducer from './bulletin_reducer';
 
 export default combineReducers({
-  //   todoLists
+  authReducer,
+  mainReducer,
 });

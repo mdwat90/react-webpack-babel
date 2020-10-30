@@ -1,21 +1,14 @@
-// export const addTodo = (text, listId) => ({
-//   type: 'ADD_TODO',
-//   id: nextTodoId++,
-//   text,
-//   listId,
-// });
-// export const setVisibilityFilter = (filter, listId) => ({
-//   type: 'SET_VISIBILITY_FILTER',
-//   filter,
-//   listId,
-// });
-// export const toggleTodo = (id, listId) => ({
-//   type: 'TOGGLE_TODO',
-//   id,
-//   listId,
-// });
-// export const VisibilityFilters = {
-//   SHOW_ALL: 'SHOW_ALL',
-//   SHOW_COMPLETED: 'SHOW_COMPLETED',
-//   SHOW_ACTIVE: 'SHOW_ACTIVE',
-// };
+import { TOGGLE_LEFT_DRAWER, TOGGLE_RIGHT_DRAWER } from './types';
+
+export const toggleLeftDrawer = (openState: any) => {
+  console.log('OPEN STATE ACTION', openState);
+  return {
+    type: TOGGLE_LEFT_DRAWER,
+    payload: openState,
+  };
+};
+
+export const toggleRightDrawer = (openState: any) => ({
+  type: TOGGLE_RIGHT_DRAWER,
+  payload: openState,
+});
