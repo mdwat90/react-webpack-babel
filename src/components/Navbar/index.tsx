@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
-import { RouteComponentProps } from '@reach/router';
+import React from 'react';
 import clsx from 'clsx';
-import { UserContext } from '../../utils/userContext';
 import {
   AppBar,
   Avatar,
@@ -14,27 +12,35 @@ import NavbarStyles from './NavbarStyles';
 import MenuIcon from '@material-ui/icons/Menu';
 import CustomDrawer from '../CustomDrawer';
 import { checkLocalStorageExpiration } from '../../helpers';
-import { NavBarContext } from '../../utils/navBarContext';
+import { connect } from 'react-redux';
+import {
+  toggleLeftDrawer,
+  toggleRightDrawer,
+} from '../../actions/main_actions';
 
-const Navbar = (props: RouteComponentProps) => {
+interface NavBarProps {
+  user: any;
+  openLeft: any;
+  openRight: any;
+  toggleLeftDrawer: (bool: boolean) => any;
+  toggleRightDrawer: (bool: boolean) => any;
+}
+
+const Navbar = ({
+  user,
+  openLeft,
+  openRight,
+  toggleLeftDrawer,
+  toggleRightDrawer,
+  ...rest
+}: NavBarProps) => {
   const classes = NavbarStyles();
-  const { user } = useContext(UserContext);
-  const { openLeft, setOpenLeft, openRight, setOpenRight } = useContext(
-    NavBarContext
-  );
 
-  const toggleLeftDrawer = (toggle: boolean) => {
-    setOpenLeft(toggle);
-  };
-  const toggleRightDrawer = (toggle: boolean) => {
-    setOpenRight(toggle);
-  };
+  const hasPhoto = !!user?.photoURL;
 
-  const hasPhoto = !!user.photoURL;
+  const firstLetter = user?.displayName.charAt(0);
 
-  const firstLetter = user.displayName.charAt(0);
-
-  checkLocalStorageExpiration(props);
+  checkLocalStorageExpiration(rest);
 
   return (
     <React.Fragment>
@@ -51,7 +57,7 @@ const Navbar = (props: RouteComponentProps) => {
             </IconButton>
           </span>
           <span>
-            <Typography>Welcome, {user.displayName} 😎</Typography>
+            <Typography>Welcome, {user?.displayName} 😎</Typography>
           </span>
           {hasPhoto ? (
             <IconButton
@@ -61,8 +67,8 @@ const Navbar = (props: RouteComponentProps) => {
               edge="start"
             >
               <Avatar
-                src={user.photoURL}
-                alt={`photo of ${user.displayName}`}
+                src={user?.photoURL}
+                alt={`photo of ${user?.displayName}`}
               />
             </IconButton>
           ) : (
@@ -83,17 +89,34 @@ const Navbar = (props: RouteComponentProps) => {
         variant="persistent"
         anchor="left"
         toggleDrawer={toggleLeftDrawer}
-        navProps={props}
+        navProps={rest}
       />
       <CustomDrawer
         open={openRight}
         variant="permanent"
         anchor="right"
         toggleDrawer={toggleRightDrawer}
-        navProps={props}
+        navProps={rest}
       />
     </React.Fragment>
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state: any, ownProps: any) => {
+  const {
+    mainReducer: { leftNavOpen, rightNavOpen },
+    authReducer: { userDetails },
+  } = state;
+  return {
+    user: userDetails,
+    openLeft: leftNavOpen,
+    openRight: rightNavOpen,
+  };
+};
+
+const actionCreators = {
+  toggleLeftDrawer,
+  toggleRightDrawer,
+};
+
+export default connect(mapStateToProps, actionCreators)(Navbar);

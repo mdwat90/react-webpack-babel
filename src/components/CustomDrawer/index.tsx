@@ -11,7 +11,7 @@ interface DrawerProps {
   open: any;
   variant: any;
   anchor: any;
-  toggleDrawer: (bool: boolean) => void;
+  toggleDrawer: (bool: boolean) => any;
   navProps: RouteComponentProps;
 }
 

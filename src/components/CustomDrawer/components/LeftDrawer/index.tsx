@@ -3,8 +3,6 @@ import { IconButton, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import TextEdit from '../../../TextEdit';
 import LeftDrawerStyles from './LeftDrawerStyles';
-import { connect } from 'react-redux';
-import { toggleLeftDrawer } from '../../../../actions';
 
 interface DrawerProps {
   open: any;
@@ -19,7 +17,7 @@ const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
       {open && (
         <React.Fragment>
           <div className={classes.toggleIconHeader}>
-            <IconButton onClick={() => toggleLeftDrawer(false)}>
+            <IconButton onClick={() => toggleDrawer(false)}>
               <ChevronLeftIcon />
             </IconButton>
           </div>
@@ -35,15 +33,4 @@ const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
   );
 };
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  console.log('STATE', state);
-  return {
-    // ... computed data from state and optionally ownProps
-  };
-};
-
-const actionCreators = {
-  toggleLeftDrawer,
-};
-
-export default connect(mapStateToProps, actionCreators)(LeftDrawer);
+export default LeftDrawer;

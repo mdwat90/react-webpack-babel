@@ -12,7 +12,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         use: ['babel-loader', 'eslint-loader'],
       },
-      { test: /\.tsx?$/, use: 'ts-loader' },
+      { test: /\.(ts|tsx)$/, use: 'ts-loader' },
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],

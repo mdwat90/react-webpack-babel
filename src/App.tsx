@@ -7,18 +7,13 @@ import reducers from './reducers';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './utils/configureStore';
 
 import FirebaseAuth from './screens/FirebaseAuth';
 import Dashboard from './screens/Dashboard';
 import History from './screens/History';
 import 'babel-polyfill';
-import CombinedProviders from './utils/CombinedProviders';
-
-const store = createStore(
-  reducers,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-);
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -44,13 +39,13 @@ const App: React.FC = (): any => {
 
   return (
     <Provider store={store}>
-      <CombinedProviders>
+      <PersistGate loading={null} persistor={persistor}>
         <Router>
           <FirebaseAuth path="/" />
           <Dashboard path="dashboard" />
           <History path="history" />
         </Router>
-      </CombinedProviders>
+      </PersistGate>
     </Provider>
   );
 };

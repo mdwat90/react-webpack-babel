@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Button, IconButton, Divider, Tab, Tabs } from '@material-ui/core';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -6,22 +7,27 @@ import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
 import { signOut } from '../../../../helpers';
 import { navigate } from '@reach/router';
-import { RightDrawerContext } from '../../../../utils/rightDrawerContext';
+import { setRightNavTabValue } from '../../../../actions/main_actions';
 import RightDrawerStyles from './RightDrawerStyles';
 
 interface DrawerProps {
   open: any;
+  tabValue: any;
   toggleDrawer: (bool: boolean) => void;
+  setRightNavTabValue: (val: number) => void;
 }
 
-const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
-  const { value, setValue } = useContext(RightDrawerContext);
-
+const RightDrawer = ({
+  open,
+  tabValue,
+  toggleDrawer,
+  setRightNavTabValue,
+}: DrawerProps) => {
   const classes = RightDrawerStyles();
 
   const VerticalTabs = ({ open }: any) => {
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-      setValue(newValue);
+    const handleChange = (newValue: number) => {
+      setRightNavTabValue(newValue);
     };
 
     return (
@@ -29,7 +35,7 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
         <Tabs
           orientation="vertical"
           variant="scrollable"
-          value={value}
+          value={tabValue}
           aria-label="Vertical tabs example"
           className={classes.tabs}
         >
@@ -37,7 +43,7 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
             label={open && 'Dashboard'}
             icon={<DescriptionOutlinedIcon />}
             onClick={(e) => {
-              handleChange(e, 0);
+              handleChange(0);
               navigate('/dashboard');
             }}
             // classes={{ root: classes.tabRoot }}
@@ -46,7 +52,7 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
             label={open && 'History'}
             icon={<HistoryOutlinedIcon />}
             onClick={(e) => {
-              handleChange(e, 1);
+              handleChange(1);
               navigate('/history');
             }}
             // classes={{ root: classes.tabRoot }}
@@ -99,4 +105,18 @@ const RightDrawer = ({ open, toggleDrawer }: DrawerProps) => {
   );
 };
 
-export default RightDrawer;
+const mapStateToProps = (state: any, ownProps: any) => {
+  const {
+    mainReducer: { rightNavTabValue },
+  } = state;
+
+  return {
+    tabValue: rightNavTabValue,
+  };
+};
+
+const actionCreators = {
+  setRightNavTabValue,
+};
+
+export default connect(mapStateToProps, actionCreators)(RightDrawer);

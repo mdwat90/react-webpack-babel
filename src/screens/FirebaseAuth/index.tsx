@@ -1,16 +1,27 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import * as firebase from 'firebase/app';
-import { UserContext } from '../../utils/userContext';
-import { RouteComponentProps, Redirect, navigate } from '@reach/router';
+import { Redirect, navigate } from '@reach/router';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { setLocalStorage } from '../../helpers';
 import FirebaseAuthStyles from './FirebaseAuthStyles';
 import { Typography, CircularProgress } from '@material-ui/core';
 import { StyledTypist } from '../../components/styledComponents';
+import { setUserDetails } from '../../actions/auth_actions';
+import { setLoading } from '../../actions/main_actions';
 import 'firebase/auth';
 
-const FirebaseAuth = (props: RouteComponentProps) => {
-  const { setUserDetails, loading, setLoading } = useContext(UserContext);
+interface FirebaseAuthProps {
+  loading: any;
+  setLoading: (bool: boolean) => any;
+  setUserDetails: (user: object) => any;
+}
+
+const FirebaseAuth = ({
+  loading,
+  setLoading,
+  setUserDetails,
+}: FirebaseAuthProps) => {
   const classes = FirebaseAuthStyles();
 
   const localStorageUID = localStorage.getItem('bulletinUID');
@@ -86,4 +97,20 @@ const FirebaseAuth = (props: RouteComponentProps) => {
   );
 };
 
-export default FirebaseAuth;
+const mapStateToProps = (state: any, ownProps: any) => {
+  const {
+    authReducer: { userDetails },
+    mainReducer: { loading },
+  } = state;
+  return {
+    user: userDetails,
+    loading: loading,
+  };
+};
+
+const actionCreators = {
+  setUserDetails,
+  setLoading,
+};
+
+export default connect(mapStateToProps, actionCreators)(FirebaseAuth);
