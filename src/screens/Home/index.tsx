@@ -14,9 +14,7 @@ interface DashboardProps extends RouteComponentProps {
 const Home = ({ authenticated, children, ...rest }: DashboardProps) => {
   const classes = DashboardStyles();
 
-  const localStorageUID = localStorage.getItem('bulletinUID');
-
-  if (!localStorageUID && !authenticated) {
+  if (!authenticated) {
     return <Redirect noThrow to="auth" />;
   }
 

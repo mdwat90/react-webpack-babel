@@ -13,6 +13,7 @@ import 'firebase/auth';
 
 interface FirebaseAuthProps {
   loading: any;
+  authenticated: any;
   setLoading: (bool: boolean) => any;
   setAuthenticated: (bool: boolean) => any;
   setUserDetails: (user: object) => any;
@@ -20,11 +21,16 @@ interface FirebaseAuthProps {
 
 const FirebaseAuth = ({
   loading,
+  authenticated,
   setLoading,
   setAuthenticated,
   setUserDetails,
 }: FirebaseAuthProps) => {
   const classes = FirebaseAuthStyles();
+
+  if (authenticated) {
+    return <Redirect noThrow to="/" />;
+  }
 
   // const signInUrl =
   //   process.env.NODE_ENV === 'development'
@@ -94,10 +100,11 @@ const FirebaseAuth = ({
 
 const mapStateToProps = (state: any, ownProps: any) => {
   const {
-    authReducer: { userDetails },
+    authReducer: { userDetails, authenticated },
     mainReducer: { loading },
   } = state;
   return {
+    authenticated: authenticated,
     user: userDetails,
     loading: loading,
   };
