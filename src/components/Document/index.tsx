@@ -1,3 +1,4 @@
+import { RouteComponentProps } from '@reach/router';
 import React from 'react';
 import { StyledDiv } from '../styledComponents';
 import Textarea from '../Textarea';

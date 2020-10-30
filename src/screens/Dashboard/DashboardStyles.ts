@@ -7,9 +7,10 @@ const DashboardStyles = makeStyles((theme: Theme) => ({
   },
   contentContainer: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: '10vh',
+    padding: '5vw 17vw',
     backgroundColor: '#e0e0e0',
     zoom: '100%',
   },

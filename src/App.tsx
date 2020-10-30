@@ -2,14 +2,13 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { Router } from '@reach/router';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducers from './reducers';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './utils/configureStore';
 
+import Document from './components/Document';
 import FirebaseAuth from './screens/FirebaseAuth';
 import Dashboard from './screens/Dashboard';
 import History from './screens/History';
@@ -43,6 +42,8 @@ const App: React.FC = (): any => {
         <Router>
           <FirebaseAuth path="/" />
           <Dashboard path="dashboard" />
+          {/* TODO: make document child of Dashboard */}
+          {/* <Document path="new-doc" /> */}
           <History path="history" />
         </Router>
       </PersistGate>

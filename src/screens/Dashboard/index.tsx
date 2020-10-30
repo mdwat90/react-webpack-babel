@@ -6,6 +6,7 @@ import DashboardStyles from './DashboardStyles';
 import 'firebase/auth';
 import Textarea from '../../components/Textarea';
 import Document from '../../components/Document';
+import Card from '../../components/Card';
 
 function getDocumentPPI() {
   var elem = document.createElement('div');
@@ -48,7 +49,11 @@ const Dashboard = (props: RouteComponentProps) => {
         <Navbar {...props} />
       </div>
       <div className={classes.contentContainer}>
-        <Document type={'default'} height={height} width={width} />
+        <Card title={'New Document'} path={'/dashboard/new-doc'} />
+        <Card title={'Templates'} path={'/dashboard/templates'} />
+        {/* <Card title={'New Document'} path={'/dashboard/new-doc'} />
+        <Card title={'New Document'} path={'/dashboard/new-doc'} /> */}
+        {/* <Document type={'default'} height={height} width={width} /> */}
       </div>
     </div>
   );
