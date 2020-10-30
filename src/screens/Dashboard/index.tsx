@@ -17,6 +17,7 @@ const Dashboard = ({ children, ...rest }: DashboardProps) => {
       <div className={classes.contentContainer}>
         <Card title={'New Bulletin'} path={'new-doc'} />
         <Card title={'Explore Templates'} path={'templates'} />
+        <Card title={'Announcements'} path={'announcements'} />
       </div>
     </div>
   );

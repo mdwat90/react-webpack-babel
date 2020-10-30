@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton, Divider } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import TextEdit from '../../../TextEdit';
+import TextEdit from '../../../../../../components/TextEdit';
 import LeftDrawerStyles from './LeftDrawerStyles';
 
 interface DrawerProps {

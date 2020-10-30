@@ -10,7 +10,7 @@ import {
 
 import NavbarStyles from './NavbarStyles';
 import MenuIcon from '@material-ui/icons/Menu';
-import CustomDrawer from '../../../../components/CustomDrawer';
+import CustomDrawer from '../CustomDrawer';
 import { checkLocalStorageExpiration } from '../../../../helpers';
 import { connect } from 'react-redux';
 import {

@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, IconButton, Divider, Tab, Tabs } from '@material-ui/core';
-import { signOut } from '../../../../helpers';
+import { signOut } from '../../../../../../helpers';
 import { navigate } from '@reach/router';
-import { setRightNavTabValue } from '../../../../actions/main_actions';
+import { setRightNavTabValue } from '../../../../../../actions/main_actions';
 import RightDrawerStyles from './RightDrawerStyles';
 
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
