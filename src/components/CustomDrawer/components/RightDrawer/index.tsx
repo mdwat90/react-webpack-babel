@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Button, IconButton, Divider, Tab, Tabs } from '@material-ui/core';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
-import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
 import { signOut } from '../../../../helpers';
 import { navigate } from '@reach/router';
 import { setRightNavTabValue } from '../../../../actions/main_actions';
 import RightDrawerStyles from './RightDrawerStyles';
+
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+// import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import HistoryOutlinedIcon from '@material-ui/icons/HistoryOutlined';
+import DashboardOutlinedIcon from '@material-ui/icons/DashboardOutlined';
 
 interface DrawerProps {
   open: any;
@@ -41,7 +43,7 @@ const RightDrawer = ({
         >
           <Tab
             label={open && 'Dashboard'}
-            icon={<DescriptionOutlinedIcon />}
+            icon={<DashboardOutlinedIcon />}
             onClick={(e) => {
               handleChange(0);
               navigate('/dashboard');
