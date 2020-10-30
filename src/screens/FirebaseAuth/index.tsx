@@ -7,28 +7,24 @@ import { setLocalStorage } from '../../helpers';
 import FirebaseAuthStyles from './FirebaseAuthStyles';
 import { Typography, CircularProgress } from '@material-ui/core';
 import { StyledTypist } from '../../components/styledComponents';
-import { setUserDetails } from '../../actions/auth_actions';
+import { setUserDetails, setAuthenticated } from '../../actions/auth_actions';
 import { setLoading } from '../../actions/main_actions';
 import 'firebase/auth';
 
 interface FirebaseAuthProps {
   loading: any;
   setLoading: (bool: boolean) => any;
+  setAuthenticated: (bool: boolean) => any;
   setUserDetails: (user: object) => any;
 }
 
 const FirebaseAuth = ({
   loading,
   setLoading,
+  setAuthenticated,
   setUserDetails,
 }: FirebaseAuthProps) => {
   const classes = FirebaseAuthStyles();
-
-  const localStorageUID = localStorage.getItem('bulletinUID');
-
-  if (localStorageUID) {
-    return <Redirect noThrow to="dashboard" />;
-  }
 
   // const signInUrl =
   //   process.env.NODE_ENV === 'development'
@@ -37,7 +33,7 @@ const FirebaseAuth = ({
 
   var uiConfig = {
     // signInSuccessUrl: '/dashboard',
-    signInFlow: 'popup',
+    // signInFlow: 'popup',
     signInOptions: [
       firebase.auth.EmailAuthProvider.PROVIDER_ID,
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -54,7 +50,8 @@ const FirebaseAuth = ({
         };
         setUserDetails(userDetails);
         setLocalStorage(authResult.user);
-        navigate(`/dashboard`, { replace: true });
+        setAuthenticated(true);
+        navigate(`/`, { replace: true });
         setLoading(false);
         return false;
       },
@@ -107,6 +104,7 @@ const mapStateToProps = (state: any, ownProps: any) => {
 };
 
 const actionCreators = {
+  setAuthenticated,
   setUserDetails,
   setLoading,
 };

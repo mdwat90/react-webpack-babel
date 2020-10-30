@@ -1,7 +1,7 @@
 import { RouteComponentProps } from '@reach/router';
 import React from 'react';
 import Document from '../../components/Document';
-import Navbar from '../../components/Navbar';
+import NewDocStyles from './NewDocStyles';
 
 function getDocumentPPI() {
   var elem = document.createElement('div');
@@ -30,10 +30,12 @@ const height = getHeightInPixels(11);
 const width = getWidthInPixels(8.5);
 
 const NewDocument = (props: RouteComponentProps) => {
-  console.log('RENDERING NEW DOC');
+  const classes = NewDocStyles();
   return (
-    <div>
-      <Document type={'default'} height={height} width={width} />
+    <div className={classes.dashContainer}>
+      <div className={classes.contentContainer}>
+        <Document type={'default'} height={height} width={width} />
+      </div>
     </div>
   );
 };

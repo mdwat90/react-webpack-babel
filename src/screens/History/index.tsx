@@ -1,6 +1,5 @@
 import React from 'react';
 import { RouteComponentProps, Redirect } from '@reach/router';
-import Navbar from '../../components/Navbar';
 
 import 'firebase/auth';
 import { Typography } from '@material-ui/core';
@@ -44,9 +43,6 @@ const History = (props: RouteComponentProps) => {
         width: '100%',
       }}
     >
-      <div>
-        <Navbar {...props} />
-      </div>
       <div
         style={{
           display: 'flex',

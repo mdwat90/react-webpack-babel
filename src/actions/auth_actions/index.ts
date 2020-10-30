@@ -1,6 +1,6 @@
 import { AUTHENTICATE, SET_USER, USER_LOGOUT } from './types';
 
-export const authenticate = (authState: any) => {
+export const setAuthenticated = (authState: any) => {
   return {
     type: AUTHENTICATE,
     payload: authState,

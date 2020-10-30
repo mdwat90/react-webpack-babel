@@ -1,4 +1,4 @@
-import { drawerWidth } from './../CustomDrawer/DrawerStyles';
+import { drawerWidth } from '../../../../components/CustomDrawer/DrawerStyles';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 
 const NavbarStyles = makeStyles((theme: Theme) =>

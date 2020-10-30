@@ -46,7 +46,7 @@ const RightDrawer = ({
             icon={<DashboardOutlinedIcon />}
             onClick={(e) => {
               handleChange(0);
-              navigate('/dashboard');
+              navigate('/');
             }}
             // classes={{ root: classes.tabRoot }}
           />
@@ -55,7 +55,7 @@ const RightDrawer = ({
             icon={<HistoryOutlinedIcon />}
             onClick={(e) => {
               handleChange(1);
-              navigate('/history');
+              navigate('history');
             }}
             // classes={{ root: classes.tabRoot }}
           />

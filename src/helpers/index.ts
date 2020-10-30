@@ -1,7 +1,7 @@
 import { RouteComponentProps, navigate } from '@reach/router';
 import * as firebase from 'firebase/app';
 import { store } from '../utils/configureStore';
-import { signOutUser } from '../actions/auth_actions';
+import { signOutUser, setAuthenticated } from '../actions/auth_actions';
 
 export const signOut = () => {
   firebase
@@ -10,8 +10,9 @@ export const signOut = () => {
     .then(function () {
       console.log('SIGNED OUT');
       localStorage.clear();
-      navigate('/', { replace: true });
       store.dispatch(signOutUser());
+      store.dispatch(setAuthenticated(false));
+      navigate('/auth', { replace: true });
     })
     .catch(function (error) {
       console.log('SIGNOUT ERROR', error);

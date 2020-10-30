@@ -8,11 +8,12 @@ import 'firebase/analytics';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './utils/configureStore';
 
-import Document from './components/Document';
-import FirebaseAuth from './screens/FirebaseAuth';
-import Dashboard from './screens/Dashboard';
-import History from './screens/History';
 import 'babel-polyfill';
+import FirebaseAuth from './screens/FirebaseAuth';
+import Home from './screens/Home';
+import Dashboard from './screens/Dashboard';
+import NewDocument from './screens/NewDocument';
+import History from './screens/History';
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -40,11 +41,13 @@ const App: React.FC = (): any => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          <FirebaseAuth path="/" />
-          <Dashboard path="dashboard" />
-          {/* TODO: make document child of Dashboard */}
-          {/* <Document path="new-doc" /> */}
-          <History path="history" />
+          <FirebaseAuth path="/auth" />
+          <Home path="/">
+            <Dashboard path="/" />
+            <NewDocument path="new-doc" />
+            <History path="history" />
+          </Home>
+          {/* TODO: create a NotFound component => <NotFound default /> */}
         </Router>
       </PersistGate>
     </Provider>

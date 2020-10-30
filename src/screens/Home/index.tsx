@@ -1,25 +1,42 @@
-import { Redirect, RouteComponentProps } from '@reach/router';
 import React from 'react';
-import Navbar from '../../components/Navbar';
-import HomeStyles from './HomeStyles';
+import { RouteComponentProps, Redirect } from '@reach/router';
+import Navbar from './components/Navbar';
+import DashboardStyles from '../Dashboard/DashboardStyles';
 
-interface HomeProps extends RouteComponentProps {
+import 'firebase/auth';
+import { connect } from 'react-redux';
+
+interface DashboardProps extends RouteComponentProps {
+  authenticated: any;
   children?: any;
 }
 
-const Home = ({ children, ...rest }: HomeProps) => {
-  const classes = HomeStyles();
+const Home = ({ authenticated, children, ...rest }: DashboardProps) => {
+  const classes = DashboardStyles();
 
-  console.log('HOME CHILDREN', children);
+  const localStorageUID = localStorage.getItem('bulletinUID');
+
+  if (!localStorageUID && !authenticated) {
+    return <Redirect noThrow to="auth" />;
+  }
 
   return (
     <div className={classes.dashContainer}>
       <div>
         <Navbar {...rest} />
       </div>
-      <div className={classes.contentContainer}>{children}</div>
+      {children}
     </div>
   );
 };
 
-export default Home;
+const mapStateToProps = (state: any) => {
+  const {
+    authReducer: { authenticated },
+  } = state;
+  return {
+    authenticated: authenticated,
+  };
+};
+
+export default connect(mapStateToProps)(Home);

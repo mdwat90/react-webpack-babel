@@ -10,20 +10,22 @@ import {
 
 import NavbarStyles from './NavbarStyles';
 import MenuIcon from '@material-ui/icons/Menu';
-import CustomDrawer from '../CustomDrawer';
-import { checkLocalStorageExpiration } from '../../helpers';
+import CustomDrawer from '../../../../components/CustomDrawer';
+import { checkLocalStorageExpiration } from '../../../../helpers';
 import { connect } from 'react-redux';
 import {
   toggleLeftDrawer,
   toggleRightDrawer,
-} from '../../actions/main_actions';
+} from '../../../../actions/main_actions';
+import { RouteComponentProps } from '@reach/router';
 
-interface NavBarProps {
+interface NavBarProps extends RouteComponentProps {
   user: any;
   openLeft: any;
   openRight: any;
   toggleLeftDrawer: (bool: boolean) => any;
   toggleRightDrawer: (bool: boolean) => any;
+  children?: any;
 }
 
 const Navbar = ({
@@ -32,6 +34,7 @@ const Navbar = ({
   openRight,
   toggleLeftDrawer,
   toggleRightDrawer,
+  children,
   ...rest
 }: NavBarProps) => {
   const classes = NavbarStyles();

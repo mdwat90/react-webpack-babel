@@ -1,6 +1,5 @@
 import React from 'react';
-import { RouteComponentProps, Redirect } from '@reach/router';
-import Navbar from '../../components/Navbar';
+import { RouteComponentProps } from '@reach/router';
 import DashboardStyles from './DashboardStyles';
 
 import 'firebase/auth';
@@ -13,16 +12,12 @@ interface DashboardProps extends RouteComponentProps {
 const Dashboard = ({ children, ...rest }: DashboardProps) => {
   const classes = DashboardStyles();
 
-  const localStorageUID = localStorage.getItem('bulletinUID');
-
-  if (!localStorageUID) {
-    return <Redirect noThrow to="/" />;
-  }
-
   return (
-    <div>
-      <Card title={'New Document'} path={'new-doc'} />
-      <Card title={'Explore Templates'} path={'templates'} />
+    <div className={classes.dashContainer}>
+      <div className={classes.contentContainer}>
+        <Card title={'New Bulletin'} path={'new-doc'} />
+        <Card title={'Explore Templates'} path={'templates'} />
+      </div>
     </div>
   );
 };
