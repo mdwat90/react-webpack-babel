@@ -6,7 +6,10 @@ const RightDrawerStyles = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: 'flex',
   },
-  tabs: {
+  tabsOpen: {
+    borderRight: `1px solid ${theme.palette.divider}`,
+  },
+  tabsClosed: {
     borderRight: `1px solid ${theme.palette.divider}`,
   },
   header: {
@@ -41,8 +44,8 @@ const RightDrawerStyles = makeStyles((theme: Theme) => ({
     padding: '25px 25px',
   },
   tabRoot: {
-    minWidth: '10px',
-    width: '10px',
+    minWidth: '30px',
+    width: '30px',
   },
 }));
 

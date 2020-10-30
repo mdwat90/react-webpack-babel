@@ -48,7 +48,7 @@ const RightDrawer = ({
               handleChange(0);
               navigate('/');
             }}
-            // classes={{ root: classes.tabRoot }}
+            // classes={!open && { root: classes.tabRoot }}
           />
           <Tab
             label={open && 'History'}
@@ -57,7 +57,7 @@ const RightDrawer = ({
               handleChange(1);
               navigate('history');
             }}
-            // classes={{ root: classes.tabRoot }}
+            // classes={!open && { root: classes.tabRoot }}
           />
         </Tabs>
       </div>

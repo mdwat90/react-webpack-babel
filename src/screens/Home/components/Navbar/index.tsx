@@ -45,9 +45,82 @@ const Navbar = ({
 
   checkLocalStorageExpiration(rest);
 
+  // const getSeasonEmoji = () => {
+  //   const seasonEmojis = [
+  //     <span>⛄</span>,
+  //     <span>🌻</span>,
+  //     <span>😎</span>,
+  //     <span>🍂</span>,
+  //   ];
+
+  //   const yearString = new Date().getFullYear();
+  //   const dateString = new Date().toLocaleDateString();
+
+  //   const springString = `3/1/${yearString}`;
+  //   const summerString = `6/1/${yearString}`;
+  //   const fallString = `9/1/${yearString}`;
+  //   const winterString = `12/1/${yearString}`;
+
+  //   const currentDate = Date.parse(dateString);
+  //   const spring = Date.parse(springString);
+  //   const summer = Date.parse(summerString);
+  //   const fall = Date.parse(fallString);
+  //   const winter = Date.parse(winterString);
+
+  //   if (currentDate > spring && currentDate < summer) {
+  //     // Spring emoji
+  //     return seasonEmojis[1];
+  //   } else if (currentDate > summer && currentDate < fall) {
+  //     // Summer emoji
+  //     return seasonEmojis[2];
+  //   } else if (currentDate > fall && currentDate < winter) {
+  //     // Fall emoji
+  //     return seasonEmojis[3];
+  //   } else {
+  //     // Winter emoji
+  //     return seasonEmojis[0];
+  //   }
+  // };
+
+  // const getBackgroundColor = () => {
+  //   const seasonEmojis = ['#3d94ff', '#519c53', '#d93604', ' #dbd807'];
+
+  //   const yearString = new Date().getFullYear();
+  //   const dateString = new Date().toLocaleDateString();
+
+  //   const springString = `3/1/${yearString}`;
+  //   const summerString = `6/1/${yearString}`;
+  //   const fallString = `9/1/${yearString}`;
+  //   const winterString = `12/1/${yearString}`;
+
+  //   const currentDate = Date.parse(dateString);
+  //   const spring = Date.parse(springString);
+  //   const summer = Date.parse(summerString);
+  //   const fall = Date.parse(fallString);
+  //   const winter = Date.parse(winterString);
+
+  //   if (currentDate > spring && currentDate < summer) {
+  //     // Spring emoji
+  //     return seasonEmojis[1];
+  //   } else if (currentDate > summer && currentDate < fall) {
+  //     // Summer emoji
+  //     return seasonEmojis[2];
+  //   } else if (currentDate > fall && currentDate < winter) {
+  //     // Fall emoji
+  //     return seasonEmojis[3];
+  //   } else {
+  //     // Winter emoji
+  //     return seasonEmojis[0];
+  //   }
+  // };
+
   return (
     <React.Fragment>
-      <AppBar position="fixed" color="default" className={clsx(classes.appBar)}>
+      <AppBar
+        position="fixed"
+        // style={{ backgroundColor: getBackgroundColor() }}
+        className={clsx(classes.appBar)}
+      >
         <Toolbar className={classes.toolBar}>
           <span>
             <IconButton
