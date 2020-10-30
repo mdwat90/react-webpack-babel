@@ -53,9 +53,7 @@ const FirebaseAuth = ({
           uid,
         };
         setUserDetails(userDetails);
-        // TODO: Make localStorage expire
         setLocalStorage(authResult.user);
-        // TODO: Can we use the uiConfig signInSuccessUrl?
         navigate(`/dashboard`, { replace: true });
         setLoading(false);
         return false;
@@ -78,7 +76,7 @@ const FirebaseAuth = ({
         ) : (
           <Typography variant="h2" gutterBottom>
             <StyledTypist>
-              <StyledTypist.Delay ms={1000} />
+              <StyledTypist.Delay ms={1500} />
               <span>BULLETIN</span>
             </StyledTypist>
           </Typography>
