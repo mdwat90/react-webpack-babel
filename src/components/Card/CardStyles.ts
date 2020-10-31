@@ -1,6 +1,6 @@
 import { Theme, makeStyles } from '@material-ui/core/styles';
 
-const CardStyles = makeStyles({
+const CardStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -10,6 +10,7 @@ const CardStyles = makeStyles({
     margin: '10px',
     cursor: 'pointer',
   },
+
   link: {
     display: 'flex',
     justifyContent: 'center',
@@ -23,6 +24,6 @@ const CardStyles = makeStyles({
     justifyContent: 'center',
     fontSize: '65px',
   },
-});
+}));
 
 export default CardStyles;
