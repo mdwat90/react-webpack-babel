@@ -73,9 +73,9 @@ templates: {
 
 ### THINGS TO CONSIDER:
 
-- Current document-id will be saved to user => current-document and timestamp will be updated on document itself when document is closed OR user is loggedout.
-- How should we make association between documents and templates? Inject document info (e.g. title, body, etc.) after template is loaded?
-- Actions
+- Current `document-id` will be saved to `user.current-document` and `timestamp` will be updated on document itself when document is closed OR user is loggedout.
+- How should we make association between documents and templates? Inject document info (e.g. `title`, `body`, etc.) after template is loaded?
+- Actions:
   - On finished typing, automatically save in cache?
   - When user signs out or browser window is closed, save to db?
 
