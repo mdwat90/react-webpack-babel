@@ -5,7 +5,7 @@ BULLETIN APP DATA MODEL
 - When modeling data for a NoSQL DB structure, it is important to remember that we are approaching from a different perspective than relational DB structure.
 - Our focus for NoSQL DB is “flattening” our data. We need to focus on how our data is going to be retrieved and stored from the database in order to make proper structural decisions.
 
-### Data Structure:
+### Proposed Data Structure:
 
 ```
 users: {
