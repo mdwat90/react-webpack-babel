@@ -1,4 +1,4 @@
-BULLETIN APP DATA MODEL
+### BULLETIN APP DATA MODEL
 
 ## Introduction:
 
