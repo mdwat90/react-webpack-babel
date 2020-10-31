@@ -55,10 +55,8 @@ documents: {
 announcements: {
     announcement-id: {
         created-at: timestamp,
-        title: title,
         body: body,
-        more-info: more-info,
-        ...???
+        details: details
     }
 }
 
