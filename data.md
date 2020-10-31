@@ -1,11 +1,11 @@
 BULLETIN APP DATA MODEL
 
-##Introduction:
+## Introduction:
 
 - When modeling data for a NoSQL DB structure, it is important to remember that we are approaching from a different perspective than relational DB structure.
 - Our focus for NoSQL DB is “flattening” our data. We need to focus on how our data is going to be retrieved and stored from the database in order to make proper structural decisions.
 
-###Data Structure:
+### Data Structure:
 
 ```
 users: {
@@ -70,7 +70,7 @@ templates: {
 }
 ```
 
-###THINGS TO CONSIDER:
+### THINGS TO CONSIDER:
 
 - Current document-id will be saved to user => current-document and timestamp will be updated on document itself when document is closed OR user is loggedout.
 - How should we make association between documents and templates? Inject document info (e.g. title, body, etc.) after template is loaded?
@@ -78,7 +78,7 @@ templates: {
   - On finished typing, automatically save in cache?
   - When user signs out or browser window is closed, save to db?
 
-###FIREBASE REALTIME DB NOTES:
+### FIREBASE REALTIME DB NOTES:
 
 - We can provide unique key id’s using [push()](https://firebase.google.com/docs/reference/js/firebase.database.Reference#push) method.
 - “If you create your own keys, they must be UTF-8 encoded, can be a maximum of 768 bytes, and cannot contain ., \$, #, [, ], /, or ASCII control characters 0-31 or 127. You cannot use ASCII control characters in the values themselves, either.”
