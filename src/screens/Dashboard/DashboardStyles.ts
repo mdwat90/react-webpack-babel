@@ -14,6 +14,9 @@ const DashboardStyles = makeStyles((theme: Theme) => ({
     backgroundColor: '#e0e0e0',
     zoom: '100%',
   },
+  icon: {
+    fontSize: '30px',
+  },
 }));
 
 export default DashboardStyles;
