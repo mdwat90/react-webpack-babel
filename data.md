@@ -16,13 +16,13 @@ users: {
         current-document: document-id,
         posted-announcements: [
             announcement-id: {
-                posted: true.
+                posted: true,
                 draft: false
             }
         ],
         drafted-announcements: [
             announcement-id: {
-                posted: false.
+                posted: false,
                 draft: true
             }
         ]
@@ -35,7 +35,8 @@ groups: {
         users: [user-id],
         posted-anouncements: [
             announcement-id: {
-                posted: true
+                posted: true,
+                draft: false
             }
         ],
     }
@@ -64,7 +65,7 @@ announcements: {
 templates: {
     template-id: {
         created-at: timestamp,
-        created-by: user-id?,
+        ?created-by: user-id?,
         html: html
     }
 }
