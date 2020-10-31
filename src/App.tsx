@@ -13,7 +13,7 @@ import FirebaseAuth from './screens/FirebaseAuth';
 import Home from './screens/Home';
 import Dashboard from './screens/Dashboard';
 import NewDocument from './screens/NewDocument';
-import History from './screens/History';
+import Recents from './screens/Recents';
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -45,7 +45,7 @@ const App: React.FC = (): any => {
           <Home path="/">
             <Dashboard path="/" />
             <NewDocument path="new-doc" />
-            <History path="history" />
+            <Recents path="recents" />
           </Home>
           {/* TODO: create a NotFound component => <NotFound default /> */}
         </Router>

@@ -4,8 +4,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { toggleRightDrawer } from '../../actions/main_actions';
 import CardStyles from './CardStyles';
-import { Link, navigate } from '@reach/router';
+import { navigate } from '@reach/router';
+import { connect } from 'react-redux';
 
 // import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 
@@ -13,12 +15,23 @@ interface SimpleCardProps {
   title: any;
   path: any;
   icon: any;
+  toggleRightDrawer: (bool: boolean) => any;
 }
 
-export default function SimpleCard({ title, path, icon }: SimpleCardProps) {
+const SimpleCard = ({
+  title,
+  path,
+  icon,
+  toggleRightDrawer,
+}: SimpleCardProps) => {
   const classes = CardStyles();
+
+  const navAndClose = () => {
+    navigate(path);
+    toggleRightDrawer(false);
+  };
   return (
-    <Card className={classes.root} onClick={() => navigate(path)}>
+    <Card className={classes.root} onClick={() => navAndClose()}>
       <CardContent>
         <Typography variant="h5" component="h2" className={classes.title}>
           {title}
@@ -27,4 +40,10 @@ export default function SimpleCard({ title, path, icon }: SimpleCardProps) {
       </CardContent>
     </Card>
   );
-}
+};
+
+const actionCreators = {
+  toggleRightDrawer,
+};
+
+export default connect(null, actionCreators)(SimpleCard);

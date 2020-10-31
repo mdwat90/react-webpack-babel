@@ -12,20 +12,19 @@ interface DashboardProps extends RouteComponentProps {
 const Dashboard = ({ children, ...rest }: DashboardProps) => {
   const classes = DashboardStyles();
 
-  // icon={<span> </span>}
   return (
     <div className={classes.dashContainer}>
       <div className={classes.contentContainer}>
         <Card title={'New Bulletin'} path={'new-doc'} icon={<span>📃</span>} />
         <Card
-          title={'Explore Templates'}
-          path={'templates'}
-          icon={<span>🔍</span>}
-        />
-        <Card
           title={'Announcements'}
           path={'announcements'}
           icon={<span>🗣</span>}
+        />
+        <Card
+          title={'Explore Templates'}
+          path={'templates'}
+          icon={<span>🔍</span>}
         />
       </div>
     </div>

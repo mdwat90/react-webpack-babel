@@ -29,7 +29,7 @@ const getHeightInPixels = (paperHeight: number) => {
 const height = getHeightInPixels(11);
 const width = getWidthInPixels(8.5);
 
-const History = (props: RouteComponentProps) => {
+const Recents = (props: RouteComponentProps) => {
   const localStorageUID = localStorage.getItem('bulletinUID');
 
   if (!localStorageUID) {
@@ -53,10 +53,10 @@ const History = (props: RouteComponentProps) => {
           zoom: '100%',
         }}
       >
-        <Typography variant="h2">HISTORY</Typography>
+        <Typography variant="h2">RECENT DOCUMENTS</Typography>
       </div>
     </div>
   );
 };
 
-export default History;
+export default Recents;

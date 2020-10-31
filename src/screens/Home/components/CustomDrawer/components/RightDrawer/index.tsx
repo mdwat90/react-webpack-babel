@@ -51,11 +51,11 @@ const RightDrawer = ({
             // classes={!open && { root: classes.tabRoot }}
           />
           <Tab
-            label={open && 'History'}
+            label={open && 'Recents'}
             icon={<HistoryOutlinedIcon />}
             onClick={(e) => {
               handleChange(1);
-              navigate('history');
+              navigate('recents');
             }}
             // classes={!open && { root: classes.tabRoot }}
           />
