@@ -19,7 +19,7 @@ const Dashboard = ({ children, ...rest }: DashboardProps) => {
         <Card
           title={'Announcements'}
           path={'announcements'}
-          icon={<span>🗣</span>}
+          icon={<span>📣</span>}
         />
       </div>
     </div>

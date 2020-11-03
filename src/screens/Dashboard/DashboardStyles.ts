@@ -2,8 +2,8 @@ import { Theme, makeStyles } from '@material-ui/core/styles';
 
 const DashboardStyles = makeStyles((theme: Theme) => ({
   dashContainer: {
-    height: '100%',
-    width: '100%',
+    // height: '100%',
+    // width: '100%',
   },
   contentContainer: {
     display: 'flex',

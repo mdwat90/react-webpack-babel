@@ -1,4 +1,4 @@
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { navigate, RouteComponentProps } from '@reach/router';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -18,9 +18,13 @@ const NewDocument = ({
   const classes = NewDocStyles();
   const steps = getSteps();
 
+  const handleSubmit = () => {
+    navigate('/', { replace: true });
+  };
+
   const handleNext = (navStep: any) => {
     if (navStep === steps.length - 1) {
-      navigate('/', { replace: true });
+      handleSubmit();
     }
     setLeftNavStepValue(leftNavStepValue + 1);
   };
@@ -29,12 +33,19 @@ const NewDocument = ({
     setLeftNavStepValue(leftNavStepValue - 1);
   };
 
-  const returnComponent = (step: number): boolean => {
-    if (step === 0) console.log('CHOOSE TEMPLATE');
-    else if (step === 1) console.log('ADD CONTENT');
-    else if (step === 2) console.log('ANNOUNCEMENTS');
-    else if (step === 3) console.log('PRINT/DOWNLOAD');
-    return false;
+  const returnComponent = (step: any): any => {
+    switch (step) {
+      case 0:
+        return <Typography variant="h2">Template</Typography>;
+      case 1:
+        return <Typography variant="h2">Add Content</Typography>;
+      case 2:
+        return <Typography variant="h2">Announcements</Typography>;
+      case 3:
+        return <Typography variant="h2">Print/Download</Typography>;
+      default:
+        <div />;
+    }
   };
 
   return (
