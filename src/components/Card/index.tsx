@@ -4,7 +4,10 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { toggleRightDrawer } from '../../actions/main_actions';
+import {
+  toggleLeftDrawer,
+  toggleRightDrawer,
+} from '../../actions/main_actions';
 import CardStyles from './CardStyles';
 import { navigate } from '@reach/router';
 import { connect } from 'react-redux';
@@ -16,6 +19,7 @@ interface SimpleCardProps {
   path: any;
   icon: any;
   toggleRightDrawer: (bool: boolean) => any;
+  toggleLeftDrawer: (bool: boolean) => any;
 }
 
 const SimpleCard = ({
@@ -23,11 +27,15 @@ const SimpleCard = ({
   path,
   icon,
   toggleRightDrawer,
+  toggleLeftDrawer,
 }: SimpleCardProps) => {
   const classes = CardStyles();
 
   const navAndClose = () => {
     navigate(path);
+    if (title === 'New Bulletin') {
+      toggleLeftDrawer(true);
+    }
     toggleRightDrawer(false);
   };
   return (
@@ -44,6 +52,7 @@ const SimpleCard = ({
 
 const actionCreators = {
   toggleRightDrawer,
+  toggleLeftDrawer,
 };
 
 export default connect(null, actionCreators)(SimpleCard);
