@@ -1,16 +1,30 @@
 import React from 'react';
-import { IconButton, Divider } from '@material-ui/core';
+import {
+  IconButton,
+  Divider,
+  Stepper,
+  Step,
+  StepLabel,
+} from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import TextEdit from '../../../../../../components/TextEdit';
 import LeftDrawerStyles from './LeftDrawerStyles';
+import { connect } from 'react-redux';
+
+export const getSteps = () => {
+  return ['Choose template', 'Add content', 'Announcements', 'Print/download'];
+};
 
 interface DrawerProps {
   open: any;
+  leftNavStepValue: any;
   toggleDrawer: (bool: boolean) => void;
 }
 
-const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
+const LeftDrawer = ({ open, leftNavStepValue, toggleDrawer }: DrawerProps) => {
   const classes = LeftDrawerStyles();
+
+  const steps = getSteps();
+
   return (
     <React.Fragment>
       <div className={classes.header} />
@@ -22,10 +36,14 @@ const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
             </IconButton>
           </div>
           <Divider />
-          <div className={classes.container}>
-            <div className={classes.textEditContainer}>
-              <TextEdit />
-            </div>
+          <div>
+            <Stepper activeStep={leftNavStepValue} orientation="vertical">
+              {steps.map((label) => (
+                <Step key={label}>
+                  <StepLabel className={classes.stepLabel}>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
           </div>
         </React.Fragment>
       )}
@@ -33,4 +51,11 @@ const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
   );
 };
 
-export default LeftDrawer;
+const mapStateToProps = (state: any) => {
+  const { leftNavStepValue } = state.mainReducer;
+  return {
+    leftNavStepValue: leftNavStepValue,
+  };
+};
+
+export default connect(mapStateToProps)(LeftDrawer);

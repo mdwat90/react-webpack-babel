@@ -35,6 +35,9 @@ const LeftDrawerStyles = makeStyles((theme: Theme) => ({
     height: '10vh',
     padding: '25px 20px',
   },
+  stepLabel: {
+    overflow: 'hidden',
+  },
 }));
 
 export default LeftDrawerStyles;

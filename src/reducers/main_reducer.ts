@@ -3,6 +3,7 @@ import {
   TOGGLE_LEFT_DRAWER,
   TOGGLE_RIGHT_DRAWER,
   SET_RIGHT_NAV_TAB_VALUE,
+  SET_LEFT_NAV_STEP_VALUE,
   SET_LOADING,
 } from '../actions/main_actions/types';
 
@@ -13,6 +14,7 @@ export const INITIAL_STATE = {
   rightNavOpen: false,
   // leftNavContext renders conditional options based on current page
   leftNavContext: null,
+  leftNavStepValue: 0,
   rightNavTabValue: 0,
   loading: false,
 };
@@ -30,6 +32,10 @@ const mainReducer = (state = INITIAL_STATE, action: any) =>
 
       case SET_RIGHT_NAV_TAB_VALUE:
         draft.rightNavTabValue = action.payload;
+        break;
+
+      case SET_LEFT_NAV_STEP_VALUE:
+        draft.leftNavStepValue = action.payload;
         break;
 
       case SET_LOADING:
