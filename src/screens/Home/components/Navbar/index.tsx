@@ -17,7 +17,7 @@ import {
   toggleLeftDrawer,
   toggleRightDrawer,
 } from '../../../../actions/main_actions';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, useLocation } from '@reach/router';
 
 interface NavBarProps extends RouteComponentProps {
   user: any;
@@ -38,12 +38,27 @@ const Navbar = ({
   ...rest
 }: NavBarProps) => {
   const classes = NavbarStyles();
+  const pathName = useLocation().pathname;
 
   const hasPhoto = !!user?.photoURL;
 
   const firstLetter = user?.displayName.charAt(0);
 
   checkLocalStorageExpiration(rest);
+
+  const renderLeftDrawer = (path: string) => {
+    if (path !== '/') {
+      return (
+        <CustomDrawer
+          open={openLeft}
+          variant="permanent"
+          anchor="left"
+          toggleDrawer={toggleLeftDrawer}
+          navProps={rest}
+        />
+      );
+    }
+  };
 
   // const getSeasonEmoji = () => {
   //   const seasonEmojis = [
@@ -160,13 +175,8 @@ const Navbar = ({
         </Toolbar>
       </AppBar>
       <Toolbar />
-      <CustomDrawer
-        open={openLeft}
-        variant="persistent"
-        anchor="left"
-        toggleDrawer={toggleLeftDrawer}
-        navProps={rest}
-      />
+      {renderLeftDrawer(pathName)}
+
       <CustomDrawer
         open={openRight}
         variant="permanent"

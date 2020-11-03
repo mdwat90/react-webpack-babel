@@ -35,12 +35,12 @@ const SimpleCard = ({
   const classes = CardStyles();
 
   const navAndClose = () => {
-    navigate(path);
     if (title === 'New Bulletin') {
       toggleLeftDrawer(true);
       setLeftNavStepValue(0);
     }
     toggleRightDrawer(false);
+    navigate(path);
   };
   return (
     <Card className={classes.root} onClick={() => navAndClose()}>

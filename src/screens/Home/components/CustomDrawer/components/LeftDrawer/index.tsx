@@ -1,54 +1,19 @@
 import React from 'react';
-import {
-  IconButton,
-  Divider,
-  Stepper,
-  Step,
-  StepLabel,
-} from '@material-ui/core';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import LeftDrawerStyles from './LeftDrawerStyles';
+import NewDocLeftNav from './components/NewDocLeftNav';
 import { connect } from 'react-redux';
-
-export const getSteps = () => {
-  return ['Choose template', 'Add content', 'Announcements', 'Print/download'];
-};
+import { useLocation } from '@reach/router';
 
 interface DrawerProps {
   open: any;
-  leftNavStepValue: any;
   toggleDrawer: (bool: boolean) => void;
 }
 
-const LeftDrawer = ({ open, leftNavStepValue, toggleDrawer }: DrawerProps) => {
-  const classes = LeftDrawerStyles();
-
-  const steps = getSteps();
-
-  return (
-    <React.Fragment>
-      <div className={classes.header} />
-      {open && (
-        <React.Fragment>
-          <div className={classes.toggleIconHeader}>
-            <IconButton onClick={() => toggleDrawer(false)}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <div>
-            <Stepper activeStep={leftNavStepValue} orientation="vertical">
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel className={classes.stepLabel}>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-          </div>
-        </React.Fragment>
-      )}
-    </React.Fragment>
-  );
+const LeftDrawer = ({ open, toggleDrawer }: DrawerProps) => {
+  const pathName = useLocation().pathname;
+  if (pathName === '/new-doc') {
+    return <NewDocLeftNav open={open} toggleDrawer={toggleDrawer} />;
+  }
+  return null;
 };
 
 const mapStateToProps = (state: any) => {

@@ -1,10 +1,10 @@
 import { Button } from '@material-ui/core';
-import { RouteComponentProps } from '@reach/router';
+import { navigate, RouteComponentProps } from '@reach/router';
 import React from 'react';
 import { connect } from 'react-redux';
 import NewDocStyles from './NewDocStyles';
 import { setLeftNavStepValue } from '../../actions/main_actions';
-import { getSteps } from '../Home/components/CustomDrawer/components/LeftDrawer';
+import { getSteps } from '../Home/components/CustomDrawer/components/LeftDrawer/components/NewDocLeftNav';
 
 interface NewDocumentProps extends RouteComponentProps {
   leftNavStepValue: number;
@@ -18,7 +18,10 @@ const NewDocument = ({
   const classes = NewDocStyles();
   const steps = getSteps();
 
-  const handleNext = () => {
+  const handleNext = (navStep: any) => {
+    if (navStep === steps.length - 1) {
+      navigate('/', { replace: true });
+    }
     setLeftNavStepValue(leftNavStepValue + 1);
   };
 
@@ -43,7 +46,11 @@ const NewDocument = ({
             <Button disabled={leftNavStepValue === 0} onClick={handleBack}>
               Back
             </Button>
-            <Button variant="contained" color="primary" onClick={handleNext}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleNext(leftNavStepValue)}
+            >
               {leftNavStepValue === steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </div>
