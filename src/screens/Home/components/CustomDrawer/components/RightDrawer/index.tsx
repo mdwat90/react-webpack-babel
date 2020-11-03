@@ -17,6 +17,7 @@ interface DrawerProps {
   tabValue: any;
   toggleDrawer: (bool: boolean) => void;
   setRightNavTabValue: (val: number) => void;
+  setLeftNavStepValue: (step: number) => void;
 }
 
 const RightDrawer = ({

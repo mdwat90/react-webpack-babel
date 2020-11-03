@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import {
   toggleLeftDrawer,
   toggleRightDrawer,
+  setLeftNavStepValue,
 } from '../../actions/main_actions';
 import CardStyles from './CardStyles';
 import { navigate } from '@reach/router';
@@ -20,6 +21,7 @@ interface SimpleCardProps {
   icon: any;
   toggleRightDrawer: (bool: boolean) => any;
   toggleLeftDrawer: (bool: boolean) => any;
+  setLeftNavStepValue: (step: number) => any;
 }
 
 const SimpleCard = ({
@@ -28,6 +30,7 @@ const SimpleCard = ({
   icon,
   toggleRightDrawer,
   toggleLeftDrawer,
+  setLeftNavStepValue,
 }: SimpleCardProps) => {
   const classes = CardStyles();
 
@@ -35,6 +38,7 @@ const SimpleCard = ({
     navigate(path);
     if (title === 'New Bulletin') {
       toggleLeftDrawer(true);
+      setLeftNavStepValue(0);
     }
     toggleRightDrawer(false);
   };
@@ -53,6 +57,7 @@ const SimpleCard = ({
 const actionCreators = {
   toggleRightDrawer,
   toggleLeftDrawer,
+  setLeftNavStepValue,
 };
 
 export default connect(null, actionCreators)(SimpleCard);

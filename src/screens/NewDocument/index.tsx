@@ -8,18 +8,15 @@ import { getSteps } from '../Home/components/CustomDrawer/components/LeftDrawer'
 
 interface NewDocumentProps extends RouteComponentProps {
   leftNavStepValue: number;
-  setLeftNavStepValue: (num: number) => void;
+  setLeftNavStepValue: (step: number) => void;
 }
 
 const NewDocument = ({
   leftNavStepValue,
   setLeftNavStepValue,
-  ...rest
 }: NewDocumentProps) => {
   const classes = NewDocStyles();
   const steps = getSteps();
-
-  console.log('REST', rest);
 
   const handleNext = () => {
     setLeftNavStepValue(leftNavStepValue + 1);
@@ -41,14 +38,16 @@ const NewDocument = ({
     <div className={classes.dashContainer}>
       <div className={classes.contentContainer}>
         <div>{returnComponent(leftNavStepValue)}</div>
-        <div>
-          <Button disabled={leftNavStepValue === 0} onClick={handleBack}>
-            Back
-          </Button>
-          <Button variant="contained" color="primary" onClick={handleNext}>
-            {leftNavStepValue === steps.length - 1 ? 'Finish' : 'Next'}
-          </Button>
-        </div>
+        {leftNavStepValue < 4 && (
+          <div>
+            <Button disabled={leftNavStepValue === 0} onClick={handleBack}>
+              Back
+            </Button>
+            <Button variant="contained" color="primary" onClick={handleNext}>
+              {leftNavStepValue === steps.length - 1 ? 'Finish' : 'Next'}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
