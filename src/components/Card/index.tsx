@@ -39,7 +39,7 @@ const SimpleCard = ({
       toggleLeftDrawer(true);
       setLeftNavStepValue(0);
     }
-    toggleRightDrawer(false);
+    // toggleRightDrawer(false);
     navigate(path);
   };
   return (

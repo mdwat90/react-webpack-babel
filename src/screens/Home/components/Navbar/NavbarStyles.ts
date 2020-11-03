@@ -37,6 +37,10 @@ const NavbarStyles = makeStyles((theme: Theme) =>
       justifyContent: 'space-between',
       alignItems: 'center',
     },
+    emptySpan: {
+      height: '40px',
+      width: '40px',
+    },
   })
 );
 

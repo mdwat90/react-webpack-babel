@@ -21,11 +21,6 @@ const Dashboard = ({ children, ...rest }: DashboardProps) => {
           path={'announcements'}
           icon={<span>🗣</span>}
         />
-        <Card
-          title={'Explore Templates'}
-          path={'templates'}
-          icon={<span>🔍</span>}
-        />
       </div>
     </div>
   );

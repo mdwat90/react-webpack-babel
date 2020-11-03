@@ -47,7 +47,7 @@ const Navbar = ({
   checkLocalStorageExpiration(rest);
 
   const renderLeftDrawer = (path: string) => {
-    if (path !== '/') {
+    if (path === '/new-doc') {
       return (
         <CustomDrawer
           open={openLeft}
@@ -137,16 +137,7 @@ const Navbar = ({
         className={clsx(classes.appBar)}
       >
         <Toolbar className={classes.toolBar}>
-          <span>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={() => toggleLeftDrawer(!openLeft)}
-              edge="start"
-            >
-              <MenuIcon />
-            </IconButton>
-          </span>
+          <span className={classes.emptySpan}></span>
           <span>
             <Typography>Welcome, {user?.displayName} 😎</Typography>
           </span>
