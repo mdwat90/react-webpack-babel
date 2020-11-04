@@ -11,7 +11,7 @@ export const INITIAL_STATE = {
   currentDocument: null,
   userHistory: [],
   leftNavOpen: false,
-  rightNavOpen: false,
+  rightNavOpen: true,
   // leftNavContext renders conditional options based on current page
   leftNavContext: null,
   leftNavStepValue: 0,

@@ -53,7 +53,7 @@ const Recents = (props: RouteComponentProps) => {
           zoom: '100%',
         }}
       >
-        <Typography variant="h2">RECENT DOCUMENTS</Typography>
+        <Typography variant="h5">RECENT DOCUMENTS</Typography>
       </div>
     </div>
   );

@@ -36,13 +36,13 @@ const NewDocument = ({
   const returnComponent = (step: any): any => {
     switch (step) {
       case 0:
-        return <Typography variant="h2">Template</Typography>;
+        return <Typography variant="h5">Template</Typography>;
       case 1:
-        return <Typography variant="h2">Add Content</Typography>;
+        return <Typography variant="h5">Add Content</Typography>;
       case 2:
-        return <Typography variant="h2">Announcements</Typography>;
+        return <Typography variant="h5">Announcements</Typography>;
       case 3:
-        return <Typography variant="h2">Print/Download</Typography>;
+        return <Typography variant="h5">Print/Download</Typography>;
       default:
         <div />;
     }
