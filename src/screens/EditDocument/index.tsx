@@ -2,19 +2,19 @@ import { Button, Typography } from '@material-ui/core';
 import { navigate, RouteComponentProps } from '@reach/router';
 import React from 'react';
 import { connect } from 'react-redux';
-import NewDocStyles from './NewDocStyles';
+import NewDocStyles from './EditDocStyles';
 import { setLeftNavStepValue } from '../../actions/main_actions';
 import { getSteps } from '../Home/components/CustomDrawer/components/LeftDrawer/components/NewDocLeftNav';
 
-interface NewDocumentProps extends RouteComponentProps {
+interface EditDocumentProps extends RouteComponentProps {
   leftNavStepValue: number;
   setLeftNavStepValue: (step: number) => void;
 }
 
-const NewDocument = ({
+const EditDocument = ({
   leftNavStepValue,
   setLeftNavStepValue,
-}: NewDocumentProps) => {
+}: EditDocumentProps) => {
   const classes = NewDocStyles();
   const steps = getSteps();
 
@@ -82,4 +82,4 @@ const actionCreators = {
   setLeftNavStepValue,
 };
 
-export default connect(mapStateToProps, actionCreators)(NewDocument);
+export default connect(mapStateToProps, actionCreators)(EditDocument);

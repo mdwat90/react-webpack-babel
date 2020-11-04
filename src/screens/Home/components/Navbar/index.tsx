@@ -47,7 +47,7 @@ const Navbar = ({
   checkLocalStorageExpiration(rest);
 
   const renderLeftDrawer = (path: string) => {
-    if (path === '/new-doc') {
+    if (path === '/new-doc' || path === '/current-doc') {
       return (
         <CustomDrawer
           open={openLeft}

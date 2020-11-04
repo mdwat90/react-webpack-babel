@@ -12,7 +12,7 @@ import 'babel-polyfill';
 import FirebaseAuth from './screens/FirebaseAuth';
 import Home from './screens/Home';
 import Dashboard from './screens/Dashboard';
-import NewDocument from './screens/NewDocument';
+import EditDocument from './screens/EditDocument';
 import Recents from './screens/Recents';
 
 const App: React.FC = (): any => {
@@ -44,7 +44,8 @@ const App: React.FC = (): any => {
           <FirebaseAuth path="/auth" />
           <Home path="/">
             <Dashboard path="/" />
-            <NewDocument path="new-doc" />
+            <EditDocument path="new-doc" />
+            <EditDocument path="current-doc" />
             <Recents path="recents" />
           </Home>
           {/* TODO: create a NotFound component => <NotFound default /> */}
