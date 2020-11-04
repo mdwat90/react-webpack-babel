@@ -4,8 +4,8 @@ const CardStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
-    minWidth: 275,
-    minHeight: 200,
+    minWidth: 250,
+    minHeight: 150,
     // flexGrow: 0.2,
     margin: '10px',
     cursor: 'pointer',
@@ -22,7 +22,7 @@ const CardStyles = makeStyles((theme: Theme) => ({
   icon: {
     display: 'flex',
     justifyContent: 'center',
-    fontSize: '65px',
+    fontSize: '60px',
   },
 }));
 

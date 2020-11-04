@@ -16,13 +16,11 @@ users: {
         current-document: document-id,
         posted-announcements: [
             announcement-id: {
-                posted: true,
                 draft: false
             }
         ],
         drafted-announcements: [
             announcement-id: {
-                posted: false,
                 draft: true
             }
         ]
@@ -32,6 +30,7 @@ users: {
 groups: {
     group-id: {
         created-at: timestamp,
+        created-by: user-id,
         users: [user-id],
         posted-anouncements: [
             announcement-id: {
@@ -45,6 +44,7 @@ groups: {
 documents: {
     document-id: {
         created-at: timestamp,
+        created-by: user-id,
         title: title,
         body: body,
         logo: logo,
@@ -55,6 +55,7 @@ documents: {
 announcements: {
     announcement-id: {
         created-at: timestamp,
+        created-by: user-id,
         body: body,
         details: details
     }
@@ -71,6 +72,7 @@ templates: {
 
 ### THINGS TO CONSIDER:
 
+- `user-id` in `users` document will be the `UID` returned from the authenticated user.
 - Current `document-id` will be saved to `user-id.current-document` and `timestamp` will be updated on document itself when document is closed OR user is logging out.
 - How should we make association between documents and templates? Inject document info (e.g. `title`, `body`, etc.) after template is loaded?
 - Actions:
