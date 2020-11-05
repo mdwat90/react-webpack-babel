@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import NewDocStyles from './NewDocStyles';
 import { setLeftNavStepValue } from '../../../../actions/main_actions';
 import { getSteps } from '../../components/CustomDrawer/components/LeftDrawer/components/NewDocLeftNav';
+import { Announcements, Content, PrintDownload, Template } from './components';
 
 interface NewDocumentProps extends RouteComponentProps {
   leftNavStepValue: number;
@@ -36,13 +37,13 @@ const NewDocument = ({
   const returnComponent = (step: any): any => {
     switch (step) {
       case 0:
-        return <Typography variant="h5">Template</Typography>;
+        return <Template />;
       case 1:
-        return <Typography variant="h5">Add Content</Typography>;
+        return <Content />;
       case 2:
-        return <Typography variant="h5">Announcements</Typography>;
+        return <Announcements />;
       case 3:
-        return <Typography variant="h5">Print/Download</Typography>;
+        return <PrintDownload />;
       default:
         <div />;
     }
