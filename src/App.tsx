@@ -11,9 +11,10 @@ import { store, persistor } from './utils/configureStore';
 import 'babel-polyfill';
 import FirebaseAuth from './screens/FirebaseAuth';
 import Home from './screens/Home';
-import Dashboard from './screens/Dashboard';
-import EditDocument from './screens/EditDocument';
-import Recents from './screens/Recents';
+import Dashboard from './screens/Home/Dashboard';
+import NewDocument from './screens/Home/Dashboard/NewDocument';
+import EditRecent from './screens/Home/Recents/EditRecent';
+import Recents from './screens/Home/Recents';
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -44,9 +45,9 @@ const App: React.FC = (): any => {
           <FirebaseAuth path="/auth" />
           <Home path="/">
             <Dashboard path="/" />
-            <EditDocument path="new-doc" />
-            <EditDocument path="current-doc" />
+            <NewDocument path="new-doc" />
             <Recents path="recents" />
+            <EditRecent path="edit-doc" />
           </Home>
           {/* TODO: create a NotFound component => <NotFound default /> */}
         </Router>

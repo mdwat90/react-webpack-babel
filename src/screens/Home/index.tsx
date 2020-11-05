@@ -1,7 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, Redirect } from '@reach/router';
 import Navbar from './components/Navbar';
-import DashboardStyles from '../Dashboard/DashboardStyles';
+import DashboardStyles from './Dashboard/DashboardStyles';
 
 import 'firebase/auth';
 import { connect } from 'react-redux';

@@ -48,6 +48,7 @@ documents: {
         title: title,
         body: body,
         logo: logo,
+        step: step,
         ?template: template-id?
     }
 }

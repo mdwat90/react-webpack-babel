@@ -3,7 +3,7 @@ import { RouteComponentProps } from '@reach/router';
 import DashboardStyles from './DashboardStyles';
 
 import 'firebase/auth';
-import Card from '../../components/Card';
+import { DashboardCard } from '../../../components/Card';
 
 interface DashboardProps extends RouteComponentProps {
   children?: any;
@@ -15,13 +15,17 @@ const Dashboard = ({ children, ...rest }: DashboardProps) => {
   return (
     <div className={classes.dashContainer}>
       <div className={classes.contentContainer}>
-        <Card title={'New Bulletin'} path={'new-doc'} icon={<span>📃</span>} />
-        <Card
+        <DashboardCard
+          title={'New Bulletin'}
+          path={'new-doc'}
+          icon={<span>📃</span>}
+        />
+        {/* <DashboardCard
           title={'Current Bulletin'}
           path={'current-doc'}
           icon={<span>📁</span>}
-        />
-        <Card
+        /> */}
+        <DashboardCard
           title={'Announcements'}
           path={'announcements'}
           icon={<span>📣</span>}
