@@ -11,7 +11,7 @@ import {
   setUserAuthDetails,
   setAuthenticated,
 } from '../../actions/auth_actions';
-import { getUserData, writeUserData } from '../../api';
+import { getUserData } from '../../api';
 import { setLoading } from '../../actions/main_actions';
 import 'firebase/auth';
 
