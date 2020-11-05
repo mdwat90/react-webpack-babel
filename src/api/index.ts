@@ -5,7 +5,6 @@ export const getUserData = (userId: any) => {
     .ref('/users/' + userId)
     .once('value')
     .then(function (snapshot: any) {
-      console.log('SNAPSHOT', snapshot.val());
       if (snapshot.val() === null) {
         createRealTimeUser(userId);
       } else {

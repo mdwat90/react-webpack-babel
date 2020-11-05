@@ -36,6 +36,22 @@ const FirebaseAuth = ({
     return <Redirect noThrow to="/" />;
   }
 
+  const authCallback = (authResult: any) => {
+    const { displayName, email, photoURL, uid } = authResult.user;
+    const userAuthDetails = {
+      displayName,
+      email,
+      photoURL,
+      uid,
+    };
+    setUserAuthDetails(userAuthDetails);
+    getUserData(uid);
+    setLocalStorage(authResult.user);
+    setAuthenticated(true);
+    navigate(`/`, { replace: true });
+    setLoading(false);
+  };
+
   // const signInUrl =
   //   process.env.NODE_ENV === 'development'
   //     ? 'http://localhost:3000/dashboard'
@@ -51,20 +67,7 @@ const FirebaseAuth = ({
 
     callbacks: {
       signInSuccessWithAuthResult: function (authResult: any) {
-        const { displayName, email, photoURL, uid } = authResult.user;
-        const userAuthDetails = {
-          displayName,
-          email,
-          photoURL,
-          uid,
-        };
-
-        setUserAuthDetails(userAuthDetails);
-        console.log(getUserData(uid));
-        setLocalStorage(authResult.user);
-        setAuthenticated(true);
-        navigate(`/`, { replace: true });
-        setLoading(false);
+        authCallback(authResult);
         return false;
       },
     },
