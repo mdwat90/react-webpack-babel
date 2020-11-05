@@ -7,7 +7,10 @@ import { setLocalStorage } from '../../helpers';
 import FirebaseAuthStyles from './FirebaseAuthStyles';
 import { Typography, CircularProgress } from '@material-ui/core';
 import { StyledTypist } from '../../components/styledComponents';
-import { setUserDetails, setAuthenticated } from '../../actions/auth_actions';
+import {
+  setUserAuthDetails,
+  setAuthenticated,
+} from '../../actions/auth_actions';
 import { setLoading } from '../../actions/main_actions';
 import 'firebase/auth';
 
@@ -16,7 +19,7 @@ interface FirebaseAuthProps {
   authenticated: any;
   setLoading: (bool: boolean) => any;
   setAuthenticated: (bool: boolean) => any;
-  setUserDetails: (user: object) => any;
+  setUserAuthDetails: (user: object) => any;
 }
 
 const FirebaseAuth = ({
@@ -24,7 +27,7 @@ const FirebaseAuth = ({
   authenticated,
   setLoading,
   setAuthenticated,
-  setUserDetails,
+  setUserAuthDetails,
 }: FirebaseAuthProps) => {
   const classes = FirebaseAuthStyles();
 
@@ -48,13 +51,13 @@ const FirebaseAuth = ({
     callbacks: {
       signInSuccessWithAuthResult: function (authResult: any) {
         const { displayName, email, photoURL, uid } = authResult.user;
-        const userDetails = {
+        const userAuthDetails = {
           displayName,
           email,
           photoURL,
           uid,
         };
-        setUserDetails(userDetails);
+        setUserAuthDetails(userAuthDetails);
         setLocalStorage(authResult.user);
         setAuthenticated(true);
         navigate(`/`, { replace: true });
@@ -100,19 +103,19 @@ const FirebaseAuth = ({
 
 const mapStateToProps = (state: any, ownProps: any) => {
   const {
-    authReducer: { userDetails, authenticated },
+    authReducer: { userAuthDetails, authenticated },
     mainReducer: { loading },
   } = state;
   return {
     authenticated: authenticated,
-    user: userDetails,
+    userAuthDetails: userAuthDetails,
     loading: loading,
   };
 };
 
 const actionCreators = {
   setAuthenticated,
-  setUserDetails,
+  setUserAuthDetails,
   setLoading,
 };
 

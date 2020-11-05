@@ -12,6 +12,7 @@ import {
 import RecentsCardStyles from './RecentsCardStyles';
 import { navigate } from '@reach/router';
 import { connect } from 'react-redux';
+import mainReducer from '../../../reducers/main_reducer';
 
 // import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
 

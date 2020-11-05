@@ -20,6 +20,7 @@ const EditRecent = ({
   const steps = getSteps();
 
   const handleSubmit = () => {
+    setLeftNavStepValue(0);
     navigate('recents', { replace: true });
   };
 
@@ -27,8 +28,9 @@ const EditRecent = ({
     console.log('save-document');
     if (navStep === steps.length - 1) {
       handleSubmit();
+    } else {
+      setLeftNavStepValue(leftNavStepValue + 1);
     }
-    setLeftNavStepValue(leftNavStepValue + 1);
   };
 
   const handleBack = () => {

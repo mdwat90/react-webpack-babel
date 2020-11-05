@@ -8,12 +8,11 @@ import {
 } from '../actions/main_actions/types';
 
 export const INITIAL_STATE = {
-  currentDocument: null,
+  userInfo: null,
   userHistory: [],
   leftNavOpen: false,
   rightNavOpen: true,
   // leftNavContext renders conditional options based on current page
-  leftNavContext: null,
   leftNavStepValue: 0,
   rightNavTabValue: 0,
   loading: false,

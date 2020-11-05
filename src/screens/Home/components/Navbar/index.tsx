@@ -20,7 +20,7 @@ import {
 import { RouteComponentProps, useLocation } from '@reach/router';
 
 interface NavBarProps extends RouteComponentProps {
-  user: any;
+  userAuthDetails: any;
   openLeft: any;
   openRight: any;
   toggleLeftDrawer: (bool: boolean) => any;
@@ -29,7 +29,7 @@ interface NavBarProps extends RouteComponentProps {
 }
 
 const Navbar = ({
-  user,
+  userAuthDetails,
   openLeft,
   openRight,
   toggleLeftDrawer,
@@ -40,9 +40,9 @@ const Navbar = ({
   const classes = NavbarStyles();
   const pathName = useLocation().pathname;
 
-  const hasPhoto = !!user?.photoURL;
+  const hasPhoto = !!userAuthDetails?.photoURL;
 
-  const firstLetter = user?.displayName.charAt(0);
+  const firstLetter = userAuthDetails?.displayName.charAt(0);
 
   checkLocalStorageExpiration(rest);
 
@@ -139,7 +139,7 @@ const Navbar = ({
         <Toolbar className={classes.toolBar}>
           <span className={classes.emptySpan}></span>
           <span>
-            <Typography>Welcome, {user?.displayName} 😎</Typography>
+            <Typography>Welcome, {userAuthDetails?.displayName} 😎</Typography>
           </span>
           {hasPhoto ? (
             <IconButton
@@ -149,8 +149,8 @@ const Navbar = ({
               edge="start"
             >
               <Avatar
-                src={user?.photoURL}
-                alt={`photo of ${user?.displayName}`}
+                src={userAuthDetails?.photoURL}
+                alt={`photo of ${userAuthDetails?.displayName}`}
               />
             </IconButton>
           ) : (
@@ -182,10 +182,10 @@ const Navbar = ({
 const mapStateToProps = (state: any, ownProps: any) => {
   const {
     mainReducer: { leftNavOpen, rightNavOpen },
-    authReducer: { userDetails },
+    authReducer: { userAuthDetails },
   } = state;
   return {
-    user: userDetails,
+    userAuthDetails: userAuthDetails,
     openLeft: leftNavOpen,
     openRight: rightNavOpen,
   };

@@ -7,10 +7,10 @@ export const setAuthenticated = (authState: any) => {
   };
 };
 
-export const setUserDetails = (userDetails: any) => {
+export const setUserAuthDetails = (userAuthDetails: any) => {
   return {
     type: SET_USER,
-    payload: userDetails,
+    payload: userAuthDetails,
   };
 };
 

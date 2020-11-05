@@ -20,6 +20,8 @@ const NewDocument = ({
   const steps = getSteps();
 
   const handleSubmit = () => {
+    console.log('HANDLE SUBMIT');
+    setLeftNavStepValue(0);
     navigate('/', { replace: true });
   };
 
@@ -27,8 +29,9 @@ const NewDocument = ({
     console.log('save-document');
     if (navStep === steps.length - 1) {
       handleSubmit();
+    } else {
+      setLeftNavStepValue(leftNavStepValue + 1);
     }
-    setLeftNavStepValue(leftNavStepValue + 1);
   };
 
   const handleBack = () => {

@@ -7,7 +7,7 @@ import {
 
 export const INITIAL_STATE = {
   authenticated: false,
-  userDetails: null,
+  userAuthDetails: null,
   signedOut: false,
 };
 const authReducer = (state = INITIAL_STATE, action: any) =>
@@ -18,7 +18,7 @@ const authReducer = (state = INITIAL_STATE, action: any) =>
         break;
 
       case SET_USER:
-        draft.userDetails = action.payload;
+        draft.userAuthDetails = action.payload;
         break;
 
       case USER_LOGOUT:
