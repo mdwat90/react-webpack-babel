@@ -11,6 +11,7 @@ import {
   setUserAuthDetails,
   setAuthenticated,
 } from '../../actions/auth_actions';
+import { getUserData, writeUserData } from '../../api';
 import { setLoading } from '../../actions/main_actions';
 import 'firebase/auth';
 
@@ -57,7 +58,9 @@ const FirebaseAuth = ({
           photoURL,
           uid,
         };
+
         setUserAuthDetails(userAuthDetails);
+        console.log(getUserData(uid));
         setLocalStorage(authResult.user);
         setAuthenticated(true);
         navigate(`/`, { replace: true });

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import * as firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/analytics';
+import 'firebase/database';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './utils/configureStore';
 
@@ -15,6 +16,8 @@ import Dashboard from './screens/Home/Dashboard';
 import NewDocument from './screens/Home/Dashboard/NewDocument';
 import EditRecent from './screens/Home/Recents/EditRecent';
 import Recents from './screens/Home/Recents';
+
+export let database: any;
 
 const App: React.FC = (): any => {
   var firebaseConfig = {
@@ -33,6 +36,7 @@ const App: React.FC = (): any => {
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
+      database = firebase.database();
     } catch (err) {
       console.log(err);
     }
