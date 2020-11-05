@@ -20,6 +20,7 @@ const EditRecent = ({
   const steps = getSteps();
 
   const handleSubmit = () => {
+    console.log('HANDLE RECENT DOC SUBMIT');
     setLeftNavStepValue(0);
     navigate('recents', { replace: true });
   };
