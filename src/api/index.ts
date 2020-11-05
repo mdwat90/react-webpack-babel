@@ -1,6 +1,3 @@
-// import * as firebase from 'firebase/app';
-// import 'firebase/database';
-
 import { database } from '../App';
 
 export const getUserData = (userId: any) => {
@@ -13,6 +10,7 @@ export const getUserData = (userId: any) => {
         createRealTimeUser(userId);
       } else {
         console.log(snapshot.val());
+        // TODO: dispatch action to set user info to mainReducer
       }
     });
 };
