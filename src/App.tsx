@@ -47,6 +47,7 @@ const App: React.FC = (): any => {
             <Dashboard path="/" />
             <NewDocument path="new-doc" />
             <Recents path="recents" />
+            {/* TODO: need to include the document-id in url */}
             <EditRecent path="edit-doc" />
           </Home>
           {/* TODO: create a NotFound component => <NotFound default /> */}
