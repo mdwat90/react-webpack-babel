@@ -23,3 +23,13 @@ export const createRealTimeUser = (userId: any) => {
     createdAt: timestamp,
   });
 };
+
+export const createNewDocument = (userId: any, tempateId: any) => {
+  const timestamp = Date.now();
+  var documentListRef = database.ref('documents');
+  var newDocumentRef = documentListRef.push();
+  return newDocumentRef.set({
+    createdAt: timestamp,
+    lastUpdated: timestamp,
+  });
+};
