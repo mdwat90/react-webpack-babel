@@ -26,7 +26,6 @@ export const setLocalStorage = (auth: any) => {
   localStorage.clear();
   localStorage.setItem('displayName', displayName);
   localStorage.setItem('email', email);
-  localStorage.setItem('bulletinUID', uid);
   photoURL !== null && localStorage.setItem('photoURL', photoURL);
 
   localStorage.setItem('expiresAt', JSON.stringify(now.getTime() + 100000000));

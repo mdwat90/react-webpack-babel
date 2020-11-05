@@ -20,10 +20,11 @@ const EditRecent = ({
   const steps = getSteps();
 
   const handleSubmit = () => {
-    navigate('/', { replace: true });
+    navigate('recents', { replace: true });
   };
 
   const handleNext = (navStep: any) => {
+    console.log('save-document');
     if (navStep === steps.length - 1) {
       handleSubmit();
     }

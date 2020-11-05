@@ -1,4 +1,4 @@
-import { Button, Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { navigate, RouteComponentProps } from '@reach/router';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -24,6 +24,7 @@ const NewDocument = ({
   };
 
   const handleNext = (navStep: any) => {
+    console.log('save-document');
     if (navStep === steps.length - 1) {
       handleSubmit();
     }

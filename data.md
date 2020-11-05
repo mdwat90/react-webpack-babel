@@ -49,7 +49,7 @@ documents: {
         body: body,
         logo: logo,
         step: step,
-        ?template: template-id?
+        template: template-id
     }
 }
 
@@ -63,11 +63,7 @@ announcements: {
 }
 
 templates: {
-    template-id: {
-        created-at: timestamp,
-        ?created-by: user-id?,
-        html: html
-    }
+    template-id:  template-id
 }
 ```
 
