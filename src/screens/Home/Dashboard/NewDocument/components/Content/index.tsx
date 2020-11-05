@@ -4,6 +4,7 @@ import { Typography } from '@material-ui/core';
 const Content = () => {
   return (
     <div>
+      {/* TODO: integrate Draft.js */}
       <Typography variant="h5">Content</Typography>
     </div>
   );
