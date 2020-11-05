@@ -20,7 +20,8 @@ const Recents = ({ children, ...rest }: RecentsProps) => {
     <div className={classes.dashContainer}>
       <div className={classes.contentContainer}>
         <RecentsCard
-          // Title Prop. Title will be formatted timestamp
+          // Title Prop. Title will be formatted created-at timestamp
+          // Last Updated Prop.
           // Step Prop. Will be the step at which this document stopped
           title={'Current Bulletin'}
           path={'edit-doc'}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyledDiv } from '../styledComponents';
-import Textarea from '../Textarea';
 
 function getDocumentPPI() {
   var elem = document.createElement('div');
@@ -29,11 +28,7 @@ const height = getHeightInPixels(11);
 const width = getWidthInPixels(8.5);
 
 const Document = (props: any) => {
-  return (
-    <StyledDiv height={11} width={8.5} {...props}>
-      <Textarea {...props}></Textarea>
-    </StyledDiv>
-  );
+  return <StyledDiv height={11} width={8.5} {...props}></StyledDiv>;
 };
 
 export default Document;
