@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 interface DrawerProps {
-  height: any;
-  width: any;
+  height?: any;
+  width?: any;
+  onClick?: () => void;
 }
 
 const StyledDiv = styled.div<DrawerProps>`
