@@ -4,6 +4,7 @@ import { store } from '../utils/configureStore';
 import { signOutUser, setAuthenticated } from '../actions/auth_actions';
 
 export const signOut = () => {
+  // TODO: save document to Firebase before signing out
   firebase
     .auth()
     .signOut()
