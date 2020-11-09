@@ -26,7 +26,7 @@ const Recents = ({ children, ...rest }: RecentsProps) => {
           // DocumentId Prop.
           title={'Current Bulletin'}
           path={'edit-doc'}
-          icon={<span>📁</span>}
+          icon={<span>📄</span>}
         />
       </div>
     </div>
