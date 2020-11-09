@@ -21,12 +21,12 @@ export const createRealTimeUser = (userId: any) => {
   });
 };
 
-export const createNewDocument = (userId: any, tempateId: any) => {
+export const createNewDocument = (userId: any, templateId?: any) => {
   const timestamp = Date.now();
-  var documentListRef = database.ref('documents');
-  var newDocumentRef = documentListRef.push();
-  return newDocumentRef.set({
+  var documentListRef = database.ref('/documents');
+  return documentListRef.push().set({
     createdAt: timestamp,
     lastUpdated: timestamp,
+    createdBy: userId,
   });
 };

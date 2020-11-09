@@ -12,13 +12,16 @@ import {
   PrintDownload,
   Template,
 } from './components';
+import { createNewDocument } from '../../../../api';
 
 interface NewDocumentProps extends RouteComponentProps {
+  userAuthDetails: any;
   leftNavStepValue: number;
   setLeftNavStepValue: (step: number) => void;
 }
 
 const NewDocument = ({
+  userAuthDetails,
   leftNavStepValue,
   setLeftNavStepValue,
 }: NewDocumentProps) => {
@@ -33,7 +36,10 @@ const NewDocument = ({
 
   const handleNext = (navStep: any) => {
     console.log('save-document');
-    if (navStep === steps.length - 1) {
+    if (navStep === 0) {
+      console.log('CREATE NEW DOC', userAuthDetails);
+      // createNewDocument(userAuthDetails.uid);
+    } else if (navStep === steps.length - 1) {
       handleSubmit();
     } else {
       setLeftNavStepValue(leftNavStepValue + 1);
@@ -86,8 +92,10 @@ const NewDocument = ({
 
 const mapStateToProps = (state: any) => {
   const { leftNavStepValue } = state.mainReducer;
+  const { userAuthDetails } = state.authReducer;
   return {
     leftNavStepValue: leftNavStepValue,
+    userAuthDetails: userAuthDetails,
   };
 };
 
