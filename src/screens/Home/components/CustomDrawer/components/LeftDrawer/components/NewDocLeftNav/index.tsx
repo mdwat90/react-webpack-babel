@@ -12,7 +12,13 @@ import LeftDrawerStyles from './LeftDrawerStyles';
 import { connect } from 'react-redux';
 
 export const getSteps = () => {
-  return ['Choose template', 'Add content', 'Announcements', 'Preview & print'];
+  return [
+    'Choose template',
+    'Add content',
+    'Announcements',
+    'Preview',
+    'Print/download',
+  ];
 };
 
 interface DrawerProps {

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve",
+    "start": "concurrently \"webpack serve\" \"npm run open\"",
+    "open": "open http://localhost:3000",
     "build": "webpack --mode production"
   },
   "author": "",

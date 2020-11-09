@@ -1,11 +1,17 @@
-import { Button, Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { navigate, RouteComponentProps } from '@reach/router';
 import React from 'react';
 import { connect } from 'react-redux';
 import EditRecentStyles from './EditRecentStyles';
 import { setLeftNavStepValue } from '../../../../actions/main_actions';
 import { getSteps } from '../../components/CustomDrawer/components/LeftDrawer/components/NewDocLeftNav';
-import { Announcements, Content, PrintDownload, Template } from './components';
+import {
+  Announcements,
+  Content,
+  PrintDownload,
+  Template,
+  Preview,
+} from './components';
 
 interface RecentDocumentsProps extends RouteComponentProps {
   leftNavStepValue: number;
@@ -47,6 +53,8 @@ const EditRecent = ({
       case 2:
         return <Announcements />;
       case 3:
+        return <Preview />;
+      case 4:
         return <PrintDownload />;
       default:
         <div />;
@@ -56,7 +64,7 @@ const EditRecent = ({
     <div className={classes.dashContainer}>
       <div className={classes.contentContainer}>
         <div>{returnComponent(leftNavStepValue)}</div>
-        {leftNavStepValue < 4 && (
+        {leftNavStepValue < steps.length && (
           <div>
             <Button disabled={leftNavStepValue === 0} onClick={handleBack}>
               Back
