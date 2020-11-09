@@ -39,6 +39,7 @@ const NewDocument = ({
     if (navStep === 0) {
       console.log('CREATE NEW DOC', userAuthDetails);
       // createNewDocument(userAuthDetails.uid);
+      setLeftNavStepValue(leftNavStepValue + 1);
     } else if (navStep === steps.length - 1) {
       handleSubmit();
     } else {
