@@ -1,6 +1,14 @@
 import React, { useRef, useState } from 'react';
-import { Editor, EditorState } from 'draft-js';
+import {
+  convertFromRaw,
+  convertToRaw,
+  DraftHandleValue,
+  Editor,
+  EditorState,
+  RichUtils,
+} from 'draft-js';
 import { StyledDiv } from '../styledComponents';
+import 'draft-js/dist/Draft.css';
 
 function getDocumentPPI() {
   var elem = document.createElement('div');
@@ -28,6 +36,8 @@ const getHeightInPixels = (paperHeight: number) => {
 const height = getHeightInPixels(11);
 const width = getWidthInPixels(8.5);
 
+const zoom = '100%';
+
 const CustomEditor = () => {
   const textEditor = useRef<any>(null);
   const focusEditor = () => {
@@ -37,10 +47,41 @@ const CustomEditor = () => {
     EditorState.createEmpty()
   );
 
+  const onBoldClick = (e: any) => {
+    e.preventDefault();
+    setEditorState(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
+  };
+  const onItalicClick = (e: any) => {
+    e.preventDefault();
+    setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'));
+  };
+
+  const handleKeyCommand = (
+    command: string,
+    editorState: EditorState,
+    eventTimeStamp: number
+  ): DraftHandleValue => {
+    const newState = RichUtils.handleKeyCommand(editorState, command);
+
+    if (newState) {
+      setEditorState(newState);
+      return 'handled';
+    }
+
+    return 'not-handled';
+  };
+
+  const contentState = editorState.getCurrentContent();
+
+  // console.log('EDITOR STATE', convertToRaw(contentState));
+
   return (
-    <StyledDiv height={height} width={width} onClick={focusEditor}>
+    <StyledDiv height={height} width={width} zoom={zoom} onClick={focusEditor}>
+      <button onMouseDown={onBoldClick}>Bold</button>
+      <button onMouseDown={onItalicClick}>Italic</button>
       <Editor
         ref={textEditor}
+        handleKeyCommand={handleKeyCommand}
         editorState={editorState}
         onChange={setEditorState}
       />
