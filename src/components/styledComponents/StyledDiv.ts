@@ -11,6 +11,7 @@ const StyledDiv = styled.div<DrawerProps>`
   height: ${(props) => props.height}px;
   width: ${(props) => props.width}px;
   zoom: ${(props) => props.zoom};
+  font-family: Roboto;
   background-color: white;
 `;
 

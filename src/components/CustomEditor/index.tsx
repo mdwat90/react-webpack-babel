@@ -8,6 +8,7 @@ import {
   RichUtils,
 } from 'draft-js';
 import { StyledDiv } from '../styledComponents';
+import Toolbar from './CustomToolbar';
 import 'draft-js/dist/Draft.css';
 
 function getDocumentPPI() {
@@ -51,6 +52,7 @@ const CustomEditor = () => {
     e.preventDefault();
     setEditorState(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
   };
+
   const onItalicClick = (e: any) => {
     e.preventDefault();
     setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'));
@@ -61,6 +63,7 @@ const CustomEditor = () => {
     editorState: EditorState,
     eventTimeStamp: number
   ): DraftHandleValue => {
+    console.log('COMMAND', command);
     const newState = RichUtils.handleKeyCommand(editorState, command);
 
     if (newState) {
@@ -71,21 +74,41 @@ const CustomEditor = () => {
     return 'not-handled';
   };
 
-  const contentState = editorState.getCurrentContent();
+  const onKeyPressed = (e: any) => {
+    console.log('EVENTTTTT', e.key);
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const newState = RichUtils.toggleBlockType(editorState, 'paragraph');
+
+      if (newState) {
+        setEditorState(newState);
+        return 'handled';
+      }
+
+      return 'not-handled';
+    }
+  };
 
   // console.log('EDITOR STATE', convertToRaw(contentState));
 
   return (
-    <StyledDiv height={height} width={width} zoom={zoom} onClick={focusEditor}>
-      <button onMouseDown={onBoldClick}>Bold</button>
-      <button onMouseDown={onItalicClick}>Italic</button>
-      <Editor
-        ref={textEditor}
-        handleKeyCommand={handleKeyCommand}
-        editorState={editorState}
-        onChange={setEditorState}
-      />
-    </StyledDiv>
+    <React.Fragment>
+      <Toolbar onBoldClick={onBoldClick} onItalicClick={onItalicClick} />
+      <StyledDiv
+        height={height}
+        width={width}
+        zoom={zoom}
+        onClick={focusEditor}
+        onKeyDown={onKeyPressed}
+      >
+        <Editor
+          ref={textEditor}
+          handleKeyCommand={handleKeyCommand}
+          editorState={editorState}
+          onChange={setEditorState}
+        />
+      </StyledDiv>
+    </React.Fragment>
   );
 };
 
