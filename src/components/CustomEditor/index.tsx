@@ -5,6 +5,7 @@ import {
   DraftHandleValue,
   Editor,
   EditorState,
+  getDefaultKeyBinding,
   RichUtils,
 } from 'draft-js';
 import { StyledDiv } from '../styledComponents';
@@ -74,11 +75,10 @@ const CustomEditor = () => {
     return 'not-handled';
   };
 
-  const onKeyPressed = (e: any) => {
-    console.log('EVENTTTTT', e.key);
+  function myKeyBindingFn(e: any): string | null {
     if (e.key === 'Tab') {
       e.preventDefault();
-      const newState = RichUtils.toggleBlockType(editorState, 'paragraph');
+      const newState = RichUtils.toggleBlockType(editorState, 'PARAGRAPH');
 
       if (newState) {
         setEditorState(newState);
@@ -87,7 +87,8 @@ const CustomEditor = () => {
 
       return 'not-handled';
     }
-  };
+    return getDefaultKeyBinding(e);
+  }
 
   // console.log('EDITOR STATE', convertToRaw(contentState));
 
@@ -99,13 +100,13 @@ const CustomEditor = () => {
         width={width}
         zoom={zoom}
         onClick={focusEditor}
-        onKeyDown={onKeyPressed}
       >
         <Editor
           ref={textEditor}
           handleKeyCommand={handleKeyCommand}
           editorState={editorState}
           onChange={setEditorState}
+          keyBindingFn={myKeyBindingFn}
         />
       </StyledDiv>
     </React.Fragment>
