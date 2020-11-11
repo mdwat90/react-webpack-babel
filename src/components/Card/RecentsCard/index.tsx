@@ -42,7 +42,7 @@ const SimpleCard = ({
   return (
     <Card className={classes.root} onClick={() => navAndClose()}>
       <CardContent>
-        <Typography variant="h5" component="h2" className={classes.title}>
+        <Typography component="h2" className={classes.title}>
           {title}
         </Typography>
         <h1 className={classes.icon}>{icon}</h1>
